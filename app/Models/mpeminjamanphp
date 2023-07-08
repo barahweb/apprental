@@ -1,0 +1,92 @@
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class m_peminjaman extends Model
+{
+    protected $table = 'peminjaman';
+
+    // protected $primaryKey = 'id_peminjaman';
+    // protected $useTimestamps = true;
+    // protected $allowedFields = ['tipe_peminjaman', 'no_peminjaman', 'harga', 'fasilitas'];
+    // protected $createdField  = 'created_at';
+    // protected $updatedField  = 'updated_at';
+
+    public function tampil()
+    {
+        // return $this->db->query('select * from peminjaman')->getResultArray();
+        return $this->db->table($this->table)
+            ->select('*')
+            ->join('mobil', 'mobil.id_mobil = peminjaman.id_mobil')
+            ->where(['status_peminjaman' => 'Belum Lunas'])
+            ->get()->getResultArray();
+    }
+    public function get_data($kondisi)
+    {
+        // return $this->db->query('select * from peminjaman where kondisi = $kondisi')->getResultArray();
+        return $this->db->table($this->table)
+            ->select('*')
+            ->where($kondisi)
+            ->get()->getResultArray();
+    }
+    public function tambah($data)
+    {
+        return $this->db->table($this->table)
+            ->insert($data);
+    }
+    public function ubah($data, $kondisi)
+    {
+        return $this->db->table($this->table)
+            ->update($data, $kondisi);
+    }
+    public function hapus($kondisi)
+    {
+        return $this->db->table($this->table)
+            ->delete($kondisi);
+    }
+
+    public function datakamar()
+    {
+        return $this->db->table('kamar')
+            ->select('*')
+            ->get()->getResultArray();
+    }
+    public function kamarisi()
+    {
+        return $this->db->table('kamar')
+            ->select('*', 'kd_kamar, status')
+            ->where('status = Terisi');
+    }
+
+    public function kamarready()
+    {
+        return $this->db->table('kamar')
+            ->select('*', 'no_kamar', 'status')
+            ->where('status', 'Kosong')
+            ->get()->getResultArray();
+    }
+    public function updatestatus($data, $kondisi)
+    {
+        return $this->db->table('kamar')
+            ->update($data, $kondisi);
+    }
+    public function ambildata($kondisi)
+    {
+        return $this->db->table($this->table)
+            ->select('*')
+            ->where($kondisi)
+            ->get()->getResultArray();
+    }
+    public function simpanpay($data)
+    {
+        return $this->db->table('pembayaran')
+            ->insert($data);
+    }
+    public function simpancusz($data)
+    {
+        return $this->db->table('pelanggan')
+            ->insert($data);
+    }
+}
