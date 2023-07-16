@@ -140,8 +140,11 @@
                 <?php
                         $db = \Config\Database::connect();
                         $query = $db->query("SELECT COUNT(id_mobil) as mobil FROM mobil where status='Tersedia'");
+                        $query2 = $db->query("SELECT COUNT(id_peminjaman) as peminjaman FROM transaksi_peminjaman where status_peminjaman<='3'");
                         $row   = $query->getRow();
-                        echo $row->mobil;
+                        $row2   = $query2->getRow();
+                        $pengurangan = $row->mobil - $row2->peminjaman;
+                        echo $pengurangan;
                     ?>
                 </h3>
             </div>
