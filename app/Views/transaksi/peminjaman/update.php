@@ -77,7 +77,20 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    <input type="text" value="0" class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
+
+                                    <?php
+                                        // untuk menghitung selisih hari terlambat
+                                        $t = date_create($us['tgl_kembali']);
+                                        $n = date_create(date('Y-m-d'));
+                                        $terlambat = date_diff($t, $n);
+                                        $hari = $terlambat->format("%a");
+
+                                        // menghitung denda
+                                        $denda = $hari * $us['harga_peminjaman'];
+                                        ?>
+                                    <?php if ($jam->jam >= $us['tgl_kembali']) : ?>
+                                        <input type="text" value="<?= number_format($denda, 0, ",", "."); ?>" class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
+                                    <?php endif; ?>                                                                                               
                                 </div>
                                 <label for="Harga">Harga Peminjaman</label>
                                 <div class="input-group mb-3">

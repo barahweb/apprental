@@ -53,6 +53,7 @@ class c_peminjaman extends BaseController
         $char = "RENT";
         function generateRandomString($length = 10)
         {
+            // KODE ID PEMINJAMAN
             $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $charactersLength = strlen($characters);
             $randomString = '';
