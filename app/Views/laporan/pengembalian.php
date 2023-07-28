@@ -63,6 +63,7 @@ function getBulan($bln)
             </strong>
             <div class="tengah" style="font-size: 25px;">Jl. Plemburan, Sedan, Sariharjo, Kec. Ngaglik </div>
             <div class="tengah" style="font-size: 25px;">Kabupaten Sleman, Daerah Istimewa Yogyakarta </div>
+
         </div>
     </div>
     <br>
@@ -77,9 +78,9 @@ function getBulan($bln)
                                             } ?> </strong> </h4>
     <br>
     <div style="border-width: 5px; border-bottom-style: outset; border-color: #000;"></div>
-    <strong>
+    <!-- <strong>
         <div hidden class="mt-5" id="ttd">Tanda Tangan</div>
-    </strong>
+    </strong> -->
 
 </div>
 <div class="content-header">
@@ -187,22 +188,7 @@ function getBulan($bln)
             <!-- /.card-body -->
         </div>
     </div>
-    <div class="kanan float-right" hidden>
-        <div class="col-sm-12">
-            <p class="col " style="margin-right: 30px; margin-top: 60px;">Yogyakarta,
-                <?php echo tgl_indo(date('Y-m-d')); ?></p>
-        </div>
-        <div class="col-sm-12">
-            <p class="col " style="margin-right: 30px; margin-top: 80px;">
-                (<?= session()->get('nama_customerservice') ?>)</p>
-        </div>
-    </div>
-    <div class="kanan" hidden>
-        <div class="col-sm-12">
-            <p class="col " style="margin-left: 300px; margin-top: 760px;">HP: 0812-2638-5760 & Email:
-                yakatransport@gmail.com</p>
-        </div>
-    </div>
+
 
     <!-- /.container-fluid -->
 </section>

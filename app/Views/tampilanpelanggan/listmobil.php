@@ -34,8 +34,19 @@
                     $sql1       = $db->query("SELECT count(id_mobil) as id_mobil from mobil join type using(id_type) where merk='$merk' or id_type='$type' and status='tersedia'")->getResultArray();
 
                 } else {
-                    $sql        = $db->query("SELECT * from mobil join type using(id_type) where merk='$merk' or id_type='$type' or status='tersedia' limit $start, $limit")->getResultArray();
-                    $sql1       = $db->query("SELECT count(id_mobil) as id_mobil from mobil join type using(id_type)  where merk='$merk' or id_type='$type' or status='tersedia'")->getResultArray();
+                    if ($merk != NULL && $type != NULL) {
+                        $sql        = $db->query("SELECT * from mobil join type using(id_type) where merk='$merk' and id_type='$type' and status='tersedia' limit $start, $limit")->getResultArray();
+                        $sql1       = $db->query("SELECT count(id_mobil) as id_mobil from mobil join type using(id_type)  where merk='$merk' and id_type='$type' and status='tersedia'")->getResultArray();
+
+                    } else {
+                        if ($merk == NULL) {
+                            $sql        = $db->query("SELECT * from mobil join type using(id_type) where id_type='$type' or status='tersedia' limit $start, $limit")->getResultArray();
+                            $sql1       = $db->query("SELECT count(id_mobil) as id_mobil from mobil join type using(id_type)  where id_type='$type' or status='tersedia'")->getResultArray();
+                        } else {
+                            $sql        = $db->query("SELECT * from mobil join type using(id_type) where merk='$merk' or status='tersedia' limit $start, $limit")->getResultArray();
+                            $sql1       = $db->query("SELECT count(id_mobil) as id_mobil from mobil join type using(id_type)  where merk='$merk' or status='tersedia'")->getResultArray();
+                        }
+                    }
 
                 }
 
@@ -48,6 +59,7 @@
                 
                 $type . $merk;
                 if (count($sql) > 0) {
+             
                     foreach ($sql as $result) {  ?>
                         <div class="product-listing-m gray-bg">
                             <div class="product-listing-img"><img src="<?= base_url() ?>/img/<?= $result['gambar']; ?>" class="img-responsive" alt="Image" style="width:400px; height:240px;" /> </a>
