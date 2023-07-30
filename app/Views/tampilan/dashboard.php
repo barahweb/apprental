@@ -73,7 +73,13 @@
                  </h3>
              </div>
              <div class="panel-footer back-footer-blue">
-                 <a href="/pelanggan" style="text-decoration: none;color: white"><strong>Pelanggan</strong></a>
+             <?php if (session()->get('nama_customerservice') != 'pemilik') : ?>
+                <a href="/pelanggan" style="text-decoration: none;color: white"><strong>Pelanggan</strong></a>
+
+            <?php else: ?>
+                <a href="#" style="text-decoration: none;color: white"><strong>Pelanggan</strong></a>
+
+            <?php endif; ?>
 
              </div>
          </div>
@@ -92,7 +98,13 @@
                  </h3>
              </div>
              <div class="panel-footer back-footer-blue">
-                 <a href="/mobil" style="text-decoration: none;color: white"><strong>Mobil</strong></a>
+             <?php if (session()->get('nama_customerservice') != 'pemilik') : ?>
+                <a href="/mobil" style="text-decoration: none;color: white"><strong>Mobil</strong></a>
+
+                <?php else: ?>
+                    <a href="#" style="text-decoration: none;color: white"><strong>Mobil</strong></a>
+
+            <?php endif; ?>
              </div>
          </div>
      </div>
@@ -126,8 +138,14 @@
                  </h3>
              </div>
              <div class="panel-footer back-footer-brown">
-                 <a href="/peminjaman" style="text-decoration: none;color: white"><strong>Penyewaan Sedang
-                         Berjalan</strong></a>
+             <?php if (session()->get('nama_customerservice') != 'pemilik') : ?>
+                <a href="/peminjaman" style="text-decoration: none;color: white"><strong>Penyewaan Sedang
+                        Berjalan</strong></a>
+            <?php else: ?>
+                <a href="#" style="text-decoration: none;color: white"><strong>Penyewaan Sedang
+                        Berjalan</strong></a>
+
+            <?php endif; ?>
              </div>
          </div>
      </div>
@@ -149,7 +167,11 @@
                 </h3>
             </div>
             <div class="panel-footer back-footer-green">
+            <?php if (session()->get('nama_customerservice') != 'pemilik') : ?>
                 <a href="/mobil" style="text-decoration: none;color: white"><strong>Mobil Tersedia</strong></a>
+            <?php else: ?>
+                <a href="#" style="text-decoration: none;color: white"><strong>Mobil Tersedia</strong></a>
+            <?php endif; ?>
             </div>
         </div>
     </div>

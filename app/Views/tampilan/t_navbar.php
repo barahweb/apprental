@@ -27,6 +27,8 @@
             Interface
         </div>
 
+
+        <?php if (session()->get('nama_customerservice') != 'pemilik') : ?>
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -55,6 +57,8 @@
                 </div>
             </div>
         </li>
+
+        <?php endif; ?>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
