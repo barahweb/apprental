@@ -44,6 +44,7 @@
                         <label for="Tahun">Tahun</label>
                         <div class="input-group mb-3">
                             <select class="form-control" name="tahun">
+                                <option value="2023" <?= $us['tahun'] == '2023' ? 'selected' : '';?>>2023</option>
                                 <option value="2022" <?= $us['tahun'] == '2022' ? 'selected' : '';?>>2022</option>
                                 <option value="2021" <?= $us['tahun'] == '2021' ? 'selected' : '';?>>2021</option>
                                 <option value="2020" <?= $us['tahun'] == '2020' ? 'selected' : '';?>>2020</option>
