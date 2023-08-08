@@ -159,7 +159,17 @@ function getBulan($bln)
                         <tbody>
                             <?php
                             $no = 1;
+
+                            $totalPeminjaman        = 0;
+                            $totalDenda             = 0;
+                            $totalPeminjamanDenda   = 0;
+
                             foreach ($data as $record) : ?>
+                            <?php
+                            $totalPeminjaman    += $record['harga_peminjaman']; 
+                            $totalDenda         += $record['denda']; 
+                            
+                            ?>
                             <tr >
                                 <th scope="row"><?= $no++; ?></th>
                                 <td ><?= $record['nama']; ?></td>
@@ -178,8 +188,12 @@ function getBulan($bln)
                         <tfoot>
                             <tr>
                                 <th colspan="6" style="text-align:center; margin-right:100px">Total:</th>
-                                <th></th>
-                                <th></th>
+                                <th>Rp <?= number_format($totalPeminjaman, 0, ",", "."); ?></th>
+                                <th>Rp <?= number_format($totalDenda, 0, ",", "."); ?></th>
+                            </tr>
+                            <tr>
+                                <th colspan="7" style="text-align:center; margin-right:100px">Total Peminjaman dan Denda:</th>
+                                <th>Rp <?= number_format($totalDenda + $totalPeminjaman, 0, ",", "."); ?></th>
                             </tr>
                         </tfoot>
                     </table>
