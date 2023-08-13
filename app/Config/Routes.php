@@ -95,6 +95,14 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->get('/delete_sopir/(:segment)', 'c_sopir::hapussopir/$1');
 
 
+	$routes->get('/jadwal_sopir', 'c_jadwalsopir::index');
+	$routes->get('/jadwal_sopir/tambah', 'c_jadwalsopir::inputdata');
+	$routes->post('/jadwal_sopir/simpan', 'c_jadwalsopir::simpan');
+	$routes->get('/ubah_jadwal_sopir/(:segment)', 'c_jadwalsopir::keformedit/$1');
+	$routes->post('/ubah_jadwal_sopir/(:segment)', 'c_jadwalsopir::updatejadwal_sopir/$1');
+	$routes->get('/delete_jadwal_sopir/(:segment)', 'c_jadwalsopir::hapusjadwal_sopir/$1');
+
+
 
 	$routes->get('/mobil', 'c_mobil::index');
 	$routes->get('/mobil/tambah', 'c_mobil::inputdata');
