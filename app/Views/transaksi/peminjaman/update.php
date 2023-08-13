@@ -69,7 +69,6 @@
                                     <input type="datetime-local" class="form-control" id="tanggalkembali" name="tanggalkembali" value="<?php date_default_timezone_set('asia/jakarta');
                                                                                                                                         echo date('Y-m-d\TH:i:s', strtotime($us['tgl_kembali'])); ?>" readonly>
                                 </div>
-                               
                             </div>
                             <div class="col-sm-6">
                                 <label for="Denda">Denda</label>
@@ -88,9 +87,7 @@
                                         // menghitung denda
                                         $denda = $hari * $us['harga_peminjaman'];
                                         ?>
-                                    <?php if ($jam->jam >= $us['tgl_kembali']) : ?>
-                                        <input type="text" value="<?= number_format($denda, 0, ",", "."); ?>" class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
-                                    <?php endif; ?>                                                                                               
+                                <input type="text"   <?php if ($jam->jam >= $us['tgl_kembali']) : ?> value="<?= number_format($denda, 0, ",", "."); ?>" <?php endif; ?> class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
                                 </div>
                                 <label for="Harga">Harga Peminjaman</label>
                                 <div class="input-group mb-3">
