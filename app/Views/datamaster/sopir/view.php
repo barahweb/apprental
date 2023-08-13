@@ -32,7 +32,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Nama Sopir</th>
-                                <th>Ketersediaan</th>
+                                <th>Status</th>
                                 <th>Alamat</th>
                                 <th>Gender</th>
                                 <th>No Telepon</th>
@@ -47,7 +47,7 @@
                                 <tr class="text-center">
                                     <th scope="row"><?= $no++; ?></th>
                                     <td> <?= $record['nama_sopir'] ?> </td>
-                                    <td> <?= $record['ketersediaan'] ?> </td>
+                                    <td> <?= $record['status'] ?> </td>
                                     <td> <?= $record['alamat'] ?> </td>
                                     <td> <?= $record['gender'] ?> </td>
                                     <td> <?= $record['no_telepon'] ?> </td>

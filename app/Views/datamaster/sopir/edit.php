@@ -33,13 +33,13 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="nama_sopir" autocomplete="off" value="<?= $us['nama_sopir']; ?>" required>
                         </div>
-                        <label for="ketersediaan">Ketersediaan</label>
+                        <label for="status">Status</label>
                         <div class="input-group mb-3">
-                            <select class="form-control" id="ketersediaan" name="ketersediaan" required>
-                                <option <?php if ($us['ketersediaan'] == "Aktif") {
+                            <select class="form-control" id="status" name="status" required>
+                                <option <?php if ($us['status'] == "Aktif") {
                                             echo "selected";
                                         } ?> value="Aktif">Aktif</option>
-                                <option <?php if ($us['ketersediaan'] == "Tidak Aktif") {
+                                <option <?php if ($us['status'] == "Tidak Aktif") {
                                             echo "selected";
                                         } ?> value="Tidak Aktif">Tidak Aktif</option>
                             </select>

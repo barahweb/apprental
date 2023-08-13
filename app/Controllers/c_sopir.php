@@ -43,7 +43,7 @@ class c_sopir extends BaseController
 	{
 		$data = [
 			'nama_sopir' => $this->request->getVar('nama_sopir'),
-			'ketersediaan' => $this->request->getVar('ketersediaan'),
+			'status' => $this->request->getVar('status'),
 			'alamat' => $this->request->getVar('alamat'),
 			'gender' => $this->request->getVar('gender'),
 			'no_telepon' => $this->request->getVar('no_telepon'),
@@ -61,12 +61,12 @@ class c_sopir extends BaseController
 		$nama_sopir = $this->request->getVar('nama_sopir');
 		$gender = $this->request->getVar('gender');
 		$alamat = $this->request->getVar('alamat');
-		$ketersediaan = $this->request->getVar('ketersediaan');
+		$status = $this->request->getVar('status');
 		$no_telepon = $this->request->getVar('no_telepon');
 		$no_ktp = $this->request->getVar('no_ktp');
 		$db = \Config\Database::connect();
 		$query = $db->query(
-			"UPDATE sopir SET nama_sopir='$nama_sopir', alamat='$alamat', gender ='$gender', no_telepon='$no_telepon', ketersediaan ='$ketersediaan', no_ktp='$no_ktp' WHERE id_sopir='$kode';"
+			"UPDATE sopir SET nama_sopir='$nama_sopir', alamat='$alamat', gender ='$gender', no_telepon='$no_telepon', status ='$status', no_ktp='$no_ktp' WHERE id_sopir='$kode';"
 		);
 		session()->setFlashdata('status_text', 'Data Berhasil Diubah!');
 
