@@ -40,6 +40,8 @@
                     <a class="collapse-item" href="/type">Data Type</a>
                     <a class="collapse-item" href="/mobil">Data Mobil</a>
                     <a class="collapse-item" href="/pelanggan">Data Pelanggan</a>
+                    <a class="collapse-item" href="/sopir">Data Sopir</a>
+                    <a class="collapse-item" href="/jadwal_sopir">Data Jadwal Sopir</a>
                 </div>
             </div>
         </li>

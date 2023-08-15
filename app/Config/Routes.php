@@ -86,6 +86,24 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->post('/ubah_pelanggan/(:segment)', 'c_pelanggan::updatepelanggan/$1');
 	$routes->get('/delete_pelanggan/(:segment)', 'c_pelanggan::hapuspelanggan/$1');
 
+	
+	$routes->get('/sopir', 'c_sopir::index');
+	$routes->get('/sopir/tambah', 'c_sopir::inputdata');
+	$routes->post('/sopir/simpan', 'c_sopir::simpan');
+	$routes->get('/ubah_sopir/(:segment)', 'c_sopir::keformedit/$1');
+	$routes->post('/ubah_sopir/(:segment)', 'c_sopir::updatesopir/$1');
+	$routes->get('/delete_sopir/(:segment)', 'c_sopir::hapussopir/$1');
+
+
+	$routes->get('/jadwal_sopir', 'c_jadwalsopir::index');
+	$routes->get('/jadwal_sopir/tambah', 'c_jadwalsopir::inputdata');
+	$routes->post('/jadwal_sopir/simpan', 'c_jadwalsopir::simpan');
+	$routes->get('/ubah_jadwal_sopir/(:segment)', 'c_jadwalsopir::keformedit/$1');
+	$routes->post('/ubah_jadwal_sopir/(:segment)', 'c_jadwalsopir::updatejadwal_sopir/$1');
+	$routes->get('/delete_jadwal_sopir/(:segment)', 'c_jadwalsopir::hapusjadwal_sopir/$1');
+
+
+
 	$routes->get('/mobil', 'c_mobil::index');
 	$routes->get('/mobil/tambah', 'c_mobil::inputdata');
 	$routes->post('/mobil/simpan', 'c_mobil::simpan');
@@ -100,6 +118,9 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->get('/ubahtype/(:segment)', 'c_type::keformedit/$1');
 	$routes->post('/ubah_type/(:segment)', 'c_type::updatetype/$1');
 	$routes->get('/delete_type/(:segment)', 'c_type::hapustype/$1');
+
+
+
 	$routes->post('/isiTable', 'c_peminjaman::isiTable');
 	$routes->get('/peminjaman', 'c_peminjaman::index');
 	$routes->get('/peminjaman/tambah', 'c_peminjaman::form_input');
