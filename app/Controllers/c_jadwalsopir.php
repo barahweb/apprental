@@ -17,7 +17,7 @@ class c_jadwalsopir extends BaseController
 		$this->model = new mjadwalsopir();
 		$this->judul = 'Jadwal Sopir';
 		$this->lib = 'datamaster/jadwalsopir';
-		$this->link = '/sopir';
+		$this->link = '/jadwal_sopir';
 
 	}
 
@@ -38,9 +38,11 @@ class c_jadwalsopir extends BaseController
 	}
 	public function inputdata()
 	{
+		$db 			= \Config\Database::connect();
 		$data = [
 			'judul' => $this->judul,
-			'link' => $this->link,
+			'link' 	=> $this->link,
+			'sopir'	=> $db->query("SELECT id_sopir,nama_sopir from sopir")->getResultArray()
 		];
 		return view($this->lib . '/add', $data);
 	}
@@ -48,49 +50,51 @@ class c_jadwalsopir extends BaseController
 	public function simpan()
 	{
 		$data = [
-			'nama_sopir' => $this->request->getVar('nama_sopir'),
-			'status' => $this->request->getVar('status'),
-			'alamat' => $this->request->getVar('alamat'),
-			'gender' => $this->request->getVar('gender'),
-			'no_telepon' => $this->request->getVar('no_telepon'),
-			'no_ktp' => $this->request->getVar('no_ktp'),
+			'id_sopir' 		=> $this->request->getVar('sopir'),
+			'hari' 			=> $this->request->getVar('hari'),
+			'jam_mulai' 	=> $this->request->getVar('jamMulai'),
+			'jam_akhir' 	=> $this->request->getVar('jamAkhir'),
 		];
-		// dd($data);
+
 		$this->model->tambah($data);
 		session()->setFlashdata('status_text', 'Data Berhasil Ditambahkan!');
 		return redirect()->to($this->link)
 			->with('status_icon', 'success')
 			->with('status', 'Berhasil');
 	}
-	public function updatesopir($kode)
+	public function updatejadwal_sopir($kode)
 	{
-		$nama_sopir = $this->request->getVar('nama_sopir');
-		$gender = $this->request->getVar('gender');
-		$alamat = $this->request->getVar('alamat');
-		$status = $this->request->getVar('status');
-		$no_telepon = $this->request->getVar('no_telepon');
-		$no_ktp = $this->request->getVar('no_ktp');
-		$db = \Config\Database::connect();
+
+		$nama_sopir 	= $this->request->getVar('sopir');
+		$hari			= $this->request->getVar('hari');
+		$jamMulai 		= $this->request->getVar('jamMulai');
+		$jamAkhir 		= $this->request->getVar('jamAkhir');
+		$db 			= \Config\Database::connect();
 		$query = $db->query(
-			"UPDATE sopir SET nama_sopir='$nama_sopir', alamat='$alamat', gender ='$gender', no_telepon='$no_telepon', status ='$status', no_ktp='$no_ktp' WHERE id_sopir='$kode';"
+			"UPDATE jadwal_sopir SET hari='$hari', jam_mulai ='$jamMulai', jam_akhir='$jamAkhir' WHERE id_jadwal='$kode';"
 		);
+
 		session()->setFlashdata('status_text', 'Data Berhasil Diubah!');
 
 		return redirect()->to($this->link)
 			->with('status_icon', 'success')
 			->with('status', 'Berhasil');
 	}
-	public function keformedit($id_sopir)
+	public function keformedit($id_jadwal)
 	{
+		$db 			= \Config\Database::connect();
 		$data = [
 			'judul' => 'Ubah sopir',
-			'sopir' => $this->model->go_ubahuser($id_sopir),
+			'sopir' =>  $db->query(
+					"SELECT sopir.nama_sopir, jadwal_sopir.* from sopir join jadwal_sopir on sopir.id_sopir = jadwal_sopir.id_sopir where id_jadwal = $id_jadwal"
+				)->getRowArray(),
 		];
 		// dd($data);
 		return view($this->lib . '/edit', $data);
 	}
-	public function hapussopir($id_sopir)
+	public function hapusjadwal_sopir($id_sopir)
 	{
+
 		try {
 			$success = $this->model->hapus_user($id_sopir);
 			if (!$success) {

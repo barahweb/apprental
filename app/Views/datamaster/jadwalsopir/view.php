@@ -33,7 +33,6 @@
                                 <th>No</th>
                                 <th>Nama Sopir</th>
                                 <th>Jadwal</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,41 +47,57 @@
 
                                     <?php 
                                         $idSopir    = $record['id_sopir'];
-                                        $dataJadwal = $db->query("SELECT * from jadwal_sopir where id_sopir = '$idSopir'")->getResultArray();
+                                        $dataJadwal = $db->query("SELECT sopir.nama_sopir, jadwal_sopir.* from sopir join jadwal_sopir on sopir.id_sopir = jadwal_sopir.id_sopir where jadwal_sopir.id_sopir = '$idSopir'")->getResultArray();
                                     ?>
                                     <td>
                                         <?php  if (count($dataJadwal) > 0) { ?>
                                             <?php foreach ($dataJadwal as $jadwal): ?>
-                                                <ul>
-                                                    <li style="padding-left: 2px"><?=$jadwal['hari']; ?> || <?= $jadwal['jam_mulai']; ?> - <?= $jadwal['jam_akhir']; ?></li><br>
-                                                </ul>
+
+                                                <?php if ($jadwal['hari'] == 'Senin') : ?>
+                                                    <div class="alert alert-primary" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Selasa') : ?>
+                                                    <div class="alert alert-secondary" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Rabu') : ?>
+                                                    <div class="alert alert-success" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Kamis') : ?>
+                                                    <div class="alert alert-danger" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Jumat') : ?>
+                                                    <div class="alert alert-warning" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Sabut') : ?>
+                                                    <div class="alert alert-info" role="alert">
+                                                <?php elseif ($jadwal['hari'] == 'Minggu'): ?>
+                                                    <div class="alert alert-dark" role="alert">
+                                                <?php endif; ?>
+
+
+                                                <?= $jadwal['hari']; ?> || <?= $jadwal['jam_mulai']; ?> - <?= $jadwal['jam_akhir']; ?>
+                                                    <button type="button" class="btn btn-danger btn-circle btn-sm float-right ml-2" data-toggle="modal" data-target="#del<?= $jadwal['id_jadwal']; ?>"><i class="fas fa-trash"></i>
+                                                    </button>
+                                                    <a href="/ubah_jadwal_sopir/<?= $jadwal['id_jadwal']; ?>" class="btn btn-primary btn-circle btn-sm float-right">
+                                                    <i class="fas fa-edit"></i></a>
+                                                        <div class="modal fade" id="del<?= $jadwal['id_jadwal']; ?>">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title"><b>Hapus</b> </h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p style="color: black;">Apakah Anda yakin ingin menghapus Jadwal Sopir <b><?= $jadwal['nama_sopir']; ?> Hari <?=$jadwal['hari']; ?></b>?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a type="button" class="btn btn-primary" href="/delete_jadwal_sopir/<?= $jadwal['id_jadwal']; ?>">Ya</a>
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
                                             <?php endforeach; ?>
                                         <?php } ?>
                                     </td>
 
-                                    <td>
-                                        <a href="/ubah_jadwal_sopir/<?= $record['id_sopir']; ?>" class="btn btn-primary btn-circle btn-sm">
-                                            <i class="fas fa-edit"></i></a>
-                                        <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#del<?= $record['id_sopir']; ?>"><i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                    <div class="modal fade" id="del<?= $record['id_sopir']; ?>">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title"><b>Hapus</b> </h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Apakah Anda yakin ingin menghapus Jadwal Sopir <b><?= $record['nama_sopir']; ?></b>?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a type="button" class="btn btn-primary" href="/delete_jadwal_sopir/<?= $record['id_sopir']; ?>">Ya</a>
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

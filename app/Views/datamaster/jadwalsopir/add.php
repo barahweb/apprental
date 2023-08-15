@@ -23,45 +23,49 @@
         <div class="card card-default color-palette-box">
             <div class="card-header">
                 <h3 class="card-title">
-                    Tambah <?= $judul; ?>
                 </h3>
             </div>
             <div class="card-body">
                 <form action=" <?= $link; ?>/simpan" method="post">
+
                     <label for="Nama Sopir">Nama Sopir</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="nama_sopir" placeholder="Masukkan Nama Sopir" required>
-                    </div>
-                    <label for="ketersediaan">Ketersediaan</label>
-                    <div class="input-group mb-3">
-                        <select class="form-control" id="ketersediaan" name="ketersediaan" required>
-                            <option value="" hidden selected disabled>-- Pilih --</option>
-                            <option value="Aktif">Aktif</option>
-                            <option value="Tidak Aktif">Tidak Aktif</option>
+                        <select name="sopir" id="sopir" data-placeholder="Pilih sopir" data-width="100%" class="form-control select2" required>
+                            <option value=""></option>
+                            <?php foreach ($sopir as $s): ?>
+                                <option value="<?= $s['id_sopir']; ?>"><?= $s['nama_sopir']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
-                    <label for="Alamat">Alamat</label>
+
+                    <label for="Hari">Hari</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
-                    </div>
-                    <label for="Gender">Gender</label>
-                    <div class="input-group mb-3">
-                        <select class="form-control" id="gender" name="gender" required>
-                            <option value="" hidden selected disabled>-- Pilih --</option>
-                            <option value="Laki-Laki">Laki-Laki</option>
-                            <option value="Perempuan">Perempuan</option>
+                        <select name="hari" id="hari" data-placeholder="Pilih Hari" data-width="100%" class="form-control select2" required>
+                            <option value=""></option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                            <option value="Sabtu">Sabtu</option>
+                            <option value="Minggu">Minggu</option>
                         </select>
                     </div>
-                    <label for="Telepon">Telepon</label>
+
+
+                    <label for="Jam Mulai">Jam Mulai</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="no_telepon" placeholder="Masukkan No Telepon" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>
+                        <input type="datetime-local" placeholder="Jam Mulai" name="jamMulai" value="<?php echo date("Y-m-d H:i:s"); ?>" class="form-control" /> 
                     </div>
-                    <label for="No Identitas">No Identitas</label>
+
+                    <label for="Jam Akhir">Jam Akhir</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="no_ktp" placeholder="Masukkan No Identitas" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>
+                        <input type="datetime-local" placeholder="Jam Akhir" name="jamAkhir" value="<?php echo date("Y-m-d H:i:s", strtotime("+1 hours")) ?>" class="form-control" /> 
                     </div>
+
+
                     <div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan Jadwal</button>
                     </div>
                     <!-- /.row -->
                 </form>
