@@ -273,6 +273,8 @@ class cust_auth extends BaseController
 
     public function pesansekarang()
     {
+
+        // dd($this->request->getVar());
         $db = \Config\Database::connect();
         $id_peminjaman = $this->request->getVar('id_peminjaman');
         $merk = $this->request->getVar('mobil');
@@ -280,6 +282,10 @@ class cust_auth extends BaseController
         $tanggalpeminjaman = $this->request->getVar('tanggalpeminjamanpesan');
         $tanggalkembali = $this->request->getVar('tanggalkembalipesan');
         $harga = $this->request->getVar('harga');
+
+        if ($this->request->getVar('checkSopir') == 'on') {
+            dd($this->request->getVar());
+        } 
         
         $datetime1 = new DateTime($tanggalpeminjaman);
         $datetime2 = new DateTime($tanggalkembali);

@@ -48,6 +48,7 @@ if (count($data) > 0) {
                 <?php } } ?>
                 <div class="divider"></div>
                 <h2 style="text-align: center">Jadwal Terisi</h2>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -70,6 +71,7 @@ if (count($data) > 0) {
                         <?php } ?>
                     </tbody>
                 </table>
+
                 <form method="POST" action="/pesansekarang" id="formpesan">
                     <input type="hidden" name="harga" id="harga" value="<?php echo $result['harga']?>">
                     <div class="form-group">
@@ -93,20 +95,32 @@ if (count($data) > 0) {
                         <input type="datetime-local" class="form-control white_bg" id="tanggalpeminjamanpesan"  min="<?php date_default_timezone_set('asia/jakarta');
                                                             echo date('Y-m-d\TH:i:s') ?>"
                             name="tanggalpeminjamanpesan" value="<?php date_default_timezone_set('asia/jakarta');
-                              echo date('Y-m-d\TH:i:s'); ?>">
+                            echo date('Y-m-d\TH:i:s'); ?>">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Tanggal Kembali <span>*</span></label>
                         <input type="datetime-local" min="<?php date_default_timezone_set('asia/jakarta');
                                                             echo date('Y-m-d\TH:i:s') ?>" class="form-control white_bg"
                             id="tanggalkembalipesan" name="tanggalkembalipesan" value="<?php date_default_timezone_set('asia/jakarta');
-                             echo date('Y-m-d\TH:i:s') ?>" required>
+                            echo date('Y-m-d\TH:i:s') ?>" required>
                     </div>
-                    <button class="btn" type="submit" name="send" type="submit" style="margin-left: 1000px;" id="buttonsubmit"
-                        >Pesan <span class="angle_arrow"><i class="fa fa-angle-right"
+
+                    <div class="form-group">
+                    <label class="control-label">Dengan Sopir</span>*</label><br>
+                        <label class="switch">
+                            <input type="checkbox" name="checkSopir" id="checkSopir">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div id="showDataSopir">
+                        
+                    </div>
+                    
+                    <button class="btn" type="submit" name="send" type="submit" style="margin-left: 1000px;" id="buttonsubmit">Pesan <span class="angle_arrow"><i class="fa fa-angle-right"
                                 aria-hidden="true"></i></span>
                     </button>
-                    <form>
+                <form>
             </div>
             <!--/Side-Bar-->
         </div>
@@ -155,4 +169,71 @@ if (count($data) > 0) {
 
     </div>
 </section>
+
+
+
+<style>
+    /* The switch - the box around the slider */
+    .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+
+    /* The slider */
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    input:checked + .slider {
+    background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+    border-radius: 34px;
+    }
+
+    .slider.round:before {
+    border-radius: 50%;
+    }
+</style>
 <?= $this->endSection(); ?>

@@ -36,6 +36,22 @@ class c_jadwalsopir extends BaseController
 		// dd($getAllJadwal);
 		return view($this->lib . '/view', $data);
 	}
+
+	public function cekSopir()
+	{
+		$db 			= \Config\Database::connect();
+		$getAllSopir 	= $db->query(
+								"SELECT * FROM sopir where status = 'aktif' "
+							)->getResultArray();
+
+
+		echo json_encode([
+            'res' => 200,
+            'data' => $getAllSopir
+        ]);
+	}
+
+
 	public function inputdata()
 	{
 		$db 			= \Config\Database::connect();

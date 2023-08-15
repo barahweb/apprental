@@ -400,6 +400,59 @@
             })
         })
     </script>
+
+    <script>
+        $("#checkSopir").on("change", function() {
+            if(this.checked) {
+                // console.log('knta')
+                $.ajax({
+                    method: "get",
+                    dataType: "json",
+                    url: "/cekSopir",
+                    success: res => {
+                        // console.log(res)
+                        showDataSopir(res)
+                    }
+                })
+            } else {
+                // console.log('sss')
+                $("#showDataSopir").html('')
+            }
+        })
+
+        function showDataSopir(res) {
+            let data = ``;
+            
+            $.each(res.data, function(k, v){
+                var number_string = v.harga_sewa.toString(),
+                                        sisa = number_string.length % 3,
+                                        rupiah = number_string.substr(0, sisa),
+                                        ribuan = number_string.substr(sisa)
+                                        .match(/\d{3}/g);
+                                    if (ribuan) {
+                                        separator = sisa ? '.' : '';
+                                        rupiah += separator + ribuan.join('.');
+                                    }
+
+
+                data += `   <td style="text-align: center;">${v.nama_sopir}</td>
+                            <td style="text-align: center;">Rp ${rupiah.toLocaleString('id-ID')}</td>`
+            })
+
+            $("#showDataSopir").append(
+                            `<table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="text-align: center;">Nama Sopir</th>
+                                        <th scope="col" style="text-align: center;">Biaya Sopir Perhari</th>
+                                    </tr>
+                                </thead>
+                                <tbody>` + data + 
+                                `</tbody>
+                            </table>`
+                        )
+        }
+    </script>
     
 </body>
 

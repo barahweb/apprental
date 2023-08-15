@@ -88,6 +88,7 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 
 	
 	$routes->get('/sopir', 'c_sopir::index');
+	$routes->get('/cekSopir', 'c_jadwalsopir::cekSopir');
 	$routes->get('/sopir/tambah', 'c_sopir::inputdata');
 	$routes->post('/sopir/simpan', 'c_sopir::simpan');
 	$routes->get('/ubah_sopir/(:segment)', 'c_sopir::keformedit/$1');
