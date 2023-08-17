@@ -41,9 +41,8 @@ class c_jadwalsopir extends BaseController
 	{
 		$db 			= \Config\Database::connect();
 		$getAllSopir 	= $db->query(
-								"SELECT * FROM sopir where status = 'aktif' "
+								"SELECT * FROM sopir where status = 'aktif' and ketersediaan IS NULL"
 							)->getResultArray();
-
 
 		echo json_encode([
             'res' => 200,

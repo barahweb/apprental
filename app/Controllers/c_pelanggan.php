@@ -213,6 +213,9 @@ class c_pelanggan extends BaseController
 				$cekHargaSopir = $db->query(
 					"select harga_sewa from sopir where id_sopir = '$id_sopir'"
 				)->getRow();
+
+				$db->query("UPDATE sopir SET ketersediaan = 'booked' where id_sopir = '$id_sopir'");
+
 			}
 
 			$data = [
@@ -234,6 +237,9 @@ class c_pelanggan extends BaseController
 					"hasil" => 1
 				]);
 			}
+
+
+
 		}
 	}
 
