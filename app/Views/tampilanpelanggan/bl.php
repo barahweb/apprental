@@ -254,6 +254,7 @@
             let harga_total = ars[5]
             const tanggal_mulai = ars[3]
             const tanggal_selesai = ars[4]
+            const id_sopir = ars[7]
             // const order_id = result.order_id
             $("#pdf").val(result.pdf_url)
             $("#order_id").val(result.order_id)
@@ -303,7 +304,7 @@
             let tanggalpeminjaman = tanggalpeminjaman1.replace("T", " ")
             let tanggalkembali1 = document.getElementById("tanggalkembali").value
             let tanggalkembali = tanggalkembali1.replace("T", " ")
-            // let jaminan2 = document.getElementById("jaminan").value;
+            let id_sopir = document.getElementById("id_sopir").value;
             // console.log(jaminan)
             let form = document.getElementById("payment-form");
             console.log(form)
@@ -315,6 +316,7 @@
                 tanggalkembali,
                 hargaMT,
                 mobil,
+                id_sopir
             ]
             $.ajax({
                 type: 'POST',
@@ -329,6 +331,7 @@
                     tanggalkembali,
                     hargaMT,
                     mobil,
+                    id_sopir
                 },
                 dataType: "json",
                 success: function(data) {
@@ -435,23 +438,40 @@
                                     }
 
 
-                data += `   <td style="text-align: center;">${v.nama_sopir}</td>
-                            <td style="text-align: center;">Rp ${rupiah.toLocaleString('id-ID')}</td>`
+                data += `  <tr> 
+
+                            <td style="text-align: center;"><input type="checkbox" class="radio rounded" name="checkbox_name" onclick="onlyOne(this)" value="${v.id_sopir}"></td>
+                            <td style="text-align: center;">${v.nama_sopir}</td>
+                            <td style="text-align: center;">Rp ${rupiah.toLocaleString('id-ID')}</td>
+                            </tr>`
             })
 
             $("#showDataSopir").append(
-                            `<table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="text-align: center;">Nama Sopir</th>
-                                        <th scope="col" style="text-align: center;">Biaya Sopir Perhari</th>
-                                    </tr>
-                                </thead>
-                                <tbody>` + data + 
-                                `</tbody>
-                            </table>`
-                        )
+                `
+                * <span class="text-danger mb-2">(Pilih Salah Satu)</span><br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col" style="text-align: center;">Nama Sopir</th>
+                            <th scope="col" style="text-align: center;">Biaya Sopir Perhari</th>
+                        </tr>
+                    </thead>
+                    <tbody>   `
+                    + data + 
+                    ` 
+                    </tbody>
+                </table>`
+            )
         }
+
+        function onlyOne(checkbox) {
+            var checkboxes = Array.from(document.getElementsByClassName('radio'))
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false
+            })
+        }
+
     </script>
     
 </body>

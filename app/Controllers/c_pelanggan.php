@@ -186,40 +186,48 @@ class c_pelanggan extends BaseController
 
 	public function selesai()
 	{
-		// echo "tol";
-		// dd($this->request->getFile('jaminan'));
-		$harga_total = $this->request->getVar('hargaMT');
-		$id_mobil = $this->request->getVar('id_mobil');
-		$mulai = $this->request->getVar('tanggalpeminjaman');
-		$selesai = $this->request->getVar('tanggalkembali');
-		$order_id = $this->request->getVar('order_id');
-		$id_pelanggan = $this->request->getVar('id_pelanggan');
-		$pdf = $this->request->getVar('pdf');
-		// $jaminan2 = $this->request->getFile('jaminan');
-		$db = \Config\Database::connect();
+		// echo json_encode([
+		// 	'hasil' => $this->request->getVar()
+		// ]);
+		$harga_total 	= $this->request->getVar('hargaMT');
+		$id_mobil 		= $this->request->getVar('id_mobil');
+		$mulai 			= $this->request->getVar('tanggalpeminjaman');
+		$selesai 		= $this->request->getVar('tanggalkembali');
+		$order_id 		= $this->request->getVar('order_id');
+		$id_pelanggan	= $this->request->getVar('id_pelanggan');
+		$id_sopir 		= $this->request->getVar('id_sopir');
+		$pdf 			= $this->request->getVar('pdf');
+		$db 			= \Config\Database::connect();
+
         $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN mobil using(id_mobil) WHERE tgl_peminjaman > '$mulai' AND tgl_kembali < '$selesai' AND id_mobil = '$id_mobil' AND status_peminjaman < '4'
         UNION
         SELECT * FROM transaksi_peminjaman JOIN mobil  using(id_mobil) WHERE tgl_kembali>'$mulai' AND tgl_peminjaman < '$selesai' AND id_mobil = '$id_mobil'AND status_peminjaman < '4'")->getRowArray();
+
 		if($sql > 0) {
 			echo json_encode([
 				'hasil' => 0,
 			]);
+
 		} else {
-			// $jaminan2->move('img');
-			// $jaminan = $jaminan2->getName();
-			// $result = json_decode($this->input->post('result_data'), true);
-			// dd($jaminan2);
+			if ($id_sopir != NULL) {
+				$cekHargaSopir = $db->query(
+					"select harga_sewa from sopir where id_sopir = '$id_sopir'"
+				)->getRow();
+			}
+
 			$data = [
-				'id_peminjaman' => $order_id,
-				'id_mobil' => $id_mobil,
-				'id_pelanggan' => $id_pelanggan,
-				'tgl_peminjaman' => $mulai,
-				'tgl_kembali' => $selesai,
-				'harga_peminjaman' => $harga_total,
+				'id_peminjaman' 	=> $order_id,
+				'id_mobil' 			=> $id_mobil,
+				'id_pelanggan' 		=> $id_pelanggan,
+				'tgl_peminjaman' 	=> $mulai,
+				'tgl_kembali' 		=> $selesai,
+				'harga_peminjaman' 	=> $harga_total,
 				'status_peminjaman' => '1',
-				'pdf' => $pdf,
-				// 'jaminan' => $jaminan,
+				'pdf' 				=> $pdf,
+				'id_sopir' 			=> $id_sopir ?? NULL,
+				'harga_sopir' 		=> $cekHargaSopir->harga_sewa ?? NULL,
 			];
+
 			$simpan = $db->table('transaksi_peminjaman')->insert($data);
 			if ($simpan) {
 				echo json_encode([

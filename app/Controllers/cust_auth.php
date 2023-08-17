@@ -275,7 +275,12 @@ class cust_auth extends BaseController
     {
 
         // dd($this->request->getVar());
+        if ($this->request->getVar('checkSopir') == 'on') {
+            $idSopir = $this->request->getVar('checkbox_name');
+        }
+
         $db = \Config\Database::connect();
+
         $id_peminjaman = $this->request->getVar('id_peminjaman');
         $merk = $this->request->getVar('mobil');
         $id_mobil = $this->request->getVar('id_mobilPesan');
@@ -283,10 +288,6 @@ class cust_auth extends BaseController
         $tanggalkembali = $this->request->getVar('tanggalkembalipesan');
         $harga = $this->request->getVar('harga');
 
-        if ($this->request->getVar('checkSopir') == 'on') {
-            dd($this->request->getVar());
-        } 
-        
         $datetime1 = new DateTime($tanggalpeminjaman);
         $datetime2 = new DateTime($tanggalkembali);
         // dd($datetime1, $datetime2);
@@ -307,17 +308,30 @@ class cust_auth extends BaseController
                         ->with('status_icon', 'error')
                         ->with('status', 'Gagal!');
                 } else {
-                    $harga_total = $harga * $interval->days;
+                    if ($this->request->getVar('checkSopir') == 'on') {
+                        $cekHargaSopir = $db->query(
+                                            "select harga_sewa from sopir where id_sopir = '$idSopir'"
+                                        )->getRow();
+
+                        $harga_total = ($harga * $interval->days) + ($cekHargaSopir->harga_sewa * $interval->days);
+
+                    } else {
+                        $harga_total = $harga * $interval->days;
+
+                    }
                     $data = [
-                        'kdpeminjaman' => $id_peminjaman,
-                        'data' => $query,
-                        'id_mobil' => $id_mobil,
-                        'merk' => $merk,
-                        'tanggalkembali' => $tanggalkembali,
-                        'tanggalpeminjaman' => $tanggalpeminjaman,
-                        'harga_total' => $harga_total,
+
+                        'kdpeminjaman'          => $id_peminjaman,
+                        'data'                  => $query,
+                        'id_mobil'              => $id_mobil,
+                        'merk'                  => $merk,
+                        'tanggalkembali'        => $tanggalkembali,
+                        'tanggalpeminjaman'     => $tanggalpeminjaman,
+                        'harga_total'           => $harga_total,
+                        'id_sopir'              => $idSopir ?? NULL
+
                     ];
-                    // dd($data);
+                    
                 return view('tampilanpelanggan/checkout', $data);
                 }
             } else {

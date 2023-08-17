@@ -89,10 +89,24 @@ function getBulan($bln)
                                             <h6><a> <?php echo $result['merk'] ?> , <?php echo $result['nama_type'] ?></a></h6>
                                             <p><b>Dari Tanggal:</b> <?php echo date('H:i:s', strtotime($result['tgl_peminjaman'])) .' - '. tgl_indo($result['tgl_peminjaman'])  ?><br /> <b>Sampai Tanggal:</b> <?php echo date('H:i:s', strtotime($result['tgl_kembali'])) .' - '. tgl_indo($result['tgl_kembali']) ?></p>
                                             <p><b>Harga peminjaman:</b> Rp <?= number_format($result['harga_peminjaman'], 0, ",", "."); ?></p>
+
+                                            <?php if ($result['id_sopir'] != NULL): ?>
+                                                <?php 
+                                                    $id_sopir = $result['id_sopir'];
+                                                    $getSopir = $db->query("select nama_sopir from sopir where id_sopir ='$id_sopir'")->getRow();
+                                                ?>
+                                                <p><b>Nama Sopir:</b> <?= $getSopir->nama_sopir; ?></p>
+                                            <?php endif; ?>
+
                                             <?php if ($result['status_peminjaman'] == '1') { ?>
                                             <a href="<?=$result['pdf']; ?>" class="button-6">Cara Bayar</a>
                                             <?php } ?>
+
+
+
                                         </div>
+
+
                                         <?php if ($result['status_peminjaman'] == '1') { ?>
                                         <div class="vehicle_status" style="display:inline">
                                             <p class="btn outline active-btn">Menunggu Pembayaran.</p>

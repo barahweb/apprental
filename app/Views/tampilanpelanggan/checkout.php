@@ -81,7 +81,7 @@ if (count($data) > 0) {
                             required>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Harga Total <span>*</span></label>
+                        <label class="control-label"><?= $id_sopir != NULL ? 'Harga Total dengan Sopir' : 'Harga Total' ?> <span>*</span></label>
                         <input type="text" class="form-control white_bg"
                             id="hargaTotal" name="hargaTotal"
                             value="Rp <?= number_format($harga_total, 0, ",", "."); ?>" readonly
@@ -91,17 +91,16 @@ if (count($data) > 0) {
                             value="<?=$harga_total; ?>" readonly
                             required>
                             <input type="hidden" name="result_type" id="result-type" value="">
-	                        <input type="hidden" name="result_data" id="result-data" value="">
-	                        <input type="hidden" name="pdf" id="pdf" value="">
-	                        <input type="hidden" name="order_id" id="order_id" value="">
+                            <input type="hidden" name="result_data" id="result-data" value="">
+                            <input type="hidden" name="pdf" id="pdf" value="">
+                            <input type="hidden" name="order_id" id="order_id" value="">
+                            <input type="hidden" name="id_sopir" id="id_sopir" value="<?= $id_sopir; ?>">
                     </div>
-                    <!-- <label for="Jaminan">Jaminan</label>
-                    <input type="file" class="form-control white_bg" id="jaminan" name="jaminan"
-                        style="height: 155px;width: 180px; border:0" onchange="preview()">
-                    <img id="input_jaminan" src="/public/img/male-placeholder.jpg" style="height: 150px;width: 150px; left: 30px; border:0 "alt="/public/img/male-placeholder.jpg"> -->
+
                     <button class="btn" type="submit" name="send" type="submit" style="margin-left: 970px;" id="pay-button">Checkout <span
                             class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                     </button>
+
                     <form>
             </div>
             <!--/Side-Bar-->
