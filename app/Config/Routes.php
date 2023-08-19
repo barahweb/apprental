@@ -127,6 +127,9 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->get('/laporanpeminjaman', 'laporanpeminjaman::index');
 	$routes->post('/caritanggalpeminjaman', 'laporanpeminjaman::caritanggal');
 	$routes->get('/laporanpengembalian', 'laporanpengembalian::index');
+	$routes->get('/pengembalian2', 'pengembalian::index');
+	$routes->post('/pengembalian2/caritanggal', 'pengembalian::caritanggal');
+
 	$routes->post('/laporanpengembalian/caritanggal', 'laporanpengembalian::caritanggal');
 });
 

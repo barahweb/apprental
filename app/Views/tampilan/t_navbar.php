@@ -55,7 +55,8 @@
             <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/peminjaman">Transaksi Peminjaman</a>
-                    <a class="collapse-item" href="/pengembalian">Transaksi Pengembalian</a>
+                    <a class="collapse-item" href="/pengembalian">Transaksi Berjalan</a>
+                    <a class="collapse-item" href="/pengembalian2">Transaksi Pengembalian</a>
                 </div>
             </div>
         </li>
