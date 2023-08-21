@@ -43,6 +43,11 @@ if (count($data) > 0) {
                             <p>Warna</p>
                         </li>
 
+                        <li> <i class="fa fa-car" aria-hidden="true"></i>
+                            <h5><?php echo $result['no_plat'] ?></h5>
+                            <p>Plat Mobil</p>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- <button class="btn" type="submit" name="send" type="submit" style="margin-top: -76px; margin-left: 1000px;">Pesan <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button> -->
@@ -89,6 +94,7 @@ if (count($data) > 0) {
                                     <?php echo $result['tahun'] ?> </li>
                                 <li><i class="fa fa-cogs" aria-hidden="true"></i>Warna <?php echo $result['warna'] ?>
                                 </li>
+                                
                             </ul>
                         </div>
                     </div>

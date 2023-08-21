@@ -195,7 +195,7 @@ class c_pelanggan extends BaseController
 		$selesai 		= $this->request->getVar('tanggalkembali');
 		$order_id 		= $this->request->getVar('order_id');
 		$id_pelanggan	= $this->request->getVar('id_pelanggan');
-		$id_sopir 		= $this->request->getVar('id_sopir');
+		$id_sopir 		= $this->request->getVar('id_sopir') ?? NULL;
 		$pdf 			= $this->request->getVar('pdf');
 		$db 			= \Config\Database::connect();
 
@@ -209,6 +209,7 @@ class c_pelanggan extends BaseController
 			]);
 
 		} else {
+
 			if ($id_sopir != NULL) {
 				$cekHargaSopir = $db->query(
 					"select harga_sewa from sopir where id_sopir = '$id_sopir'"
@@ -216,20 +217,34 @@ class c_pelanggan extends BaseController
 
 				$db->query("UPDATE sopir SET ketersediaan = 'booked' where id_sopir = '$id_sopir'");
 
+				
+				$data = [
+					'id_peminjaman' 	=> $order_id,
+					'id_mobil' 			=> $id_mobil,
+					'id_pelanggan' 		=> $id_pelanggan,
+					'tgl_peminjaman' 	=> $mulai,
+					'tgl_kembali' 		=> $selesai,
+					'harga_peminjaman' 	=> $harga_total,
+					'status_peminjaman' => '1',
+					'pdf' 				=> $pdf,
+					'id_sopir' 			=> $id_sopir,
+					'harga_sopir' 		=> $cekHargaSopir->harga_sewa,
+				];
+				
+			} else {
+				
+				$data = [
+					'id_peminjaman' 	=> $order_id,
+					'id_mobil' 			=> $id_mobil,
+					'id_pelanggan' 		=> $id_pelanggan,
+					'tgl_peminjaman' 	=> $mulai,
+					'tgl_kembali' 		=> $selesai,
+					'harga_peminjaman' 	=> $harga_total,
+					'status_peminjaman' => '1',
+					'pdf' 				=> $pdf,
+				];
+				
 			}
-
-			$data = [
-				'id_peminjaman' 	=> $order_id,
-				'id_mobil' 			=> $id_mobil,
-				'id_pelanggan' 		=> $id_pelanggan,
-				'tgl_peminjaman' 	=> $mulai,
-				'tgl_kembali' 		=> $selesai,
-				'harga_peminjaman' 	=> $harga_total,
-				'status_peminjaman' => '1',
-				'pdf' 				=> $pdf,
-				'id_sopir' 			=> $id_sopir ?? NULL,
-				'harga_sopir' 		=> $cekHargaSopir->harga_sewa ?? NULL,
-			];
 
 			$simpan = $db->table('transaksi_peminjaman')->insert($data);
 			if ($simpan) {
