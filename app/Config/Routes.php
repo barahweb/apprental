@@ -40,6 +40,9 @@ $routes->get('/listmobil', 'cust_auth::listmobil');
 $routes->post('/hasilcarimobil', 'cust_auth::hasilcarimobil');
 $routes->post('/datadaftarcust', 'cust_auth::datadaftarcust');
 $routes->get('/detailmobil/(:segment)', 'cust_auth::detailmobil/$1');
+
+$routes->get('/invoice/(:segment)', 'cust_auth::invoice/$1');
+
 $routes->get('/formpesan/(:segment)', 'cust_auth::formpesan/$1', ['filter' => 'logincust']);
 $routes->post('/pesansekarang', 'cust_auth::pesansekarang');
 $routes->get('/checkout', 'cust_auth::checkout');

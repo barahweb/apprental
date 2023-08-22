@@ -100,10 +100,10 @@ function getBulan($bln)
 
                                             <?php if ($result['status_peminjaman'] == '1') { ?>
                                             <a href="<?=$result['pdf']; ?>" class="button-6">Cara Bayar</a>
-                                            <?php } ?>
-
-
-
+                                            <?php } else { ?>
+                                                <a href="/invoice/<?=$result['id_peminjaman']; ?>" class="button-6">Cetak Invoice</a>
+                                                
+                                            <?php } ?> 
                                         </div>
 
 

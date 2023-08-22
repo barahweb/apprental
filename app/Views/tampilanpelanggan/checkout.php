@@ -43,6 +43,10 @@ if (count($data) > 0) {
                             <h5><?php echo $result['warna'] ?></h5>
                             <p>Warna</p>
                         </li>
+                        <li> <i class="fa fa-car" aria-hidden="true"></i>
+                            <h5><?php echo $result['no_plat'] ?></h5>
+                            <p>Plat Mobil</p>
+                        </li>
                     </ul>
                 </div>
                 <?php } } ?>
@@ -69,8 +73,7 @@ if (count($data) > 0) {
                         <label class="control-label">Tanggal Peminjaman <span>*</span></label>
                         <input type="datetime-local" class="form-control white_bg" id="tanggalpeminjaman"
                             name="tanggalpeminjaman"
-                            value="<?=$tanggalpeminjaman; ?>"readonly
-                            >
+                            value="<?=$tanggalpeminjaman; ?>"readonly>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Tanggal Kembali <span>*</span></label>

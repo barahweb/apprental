@@ -42,6 +42,10 @@ if (count($data) > 0) {
                             <h5><?php echo $result['warna'] ?></h5>
                             <p>Warna</p>
                         </li>
+                        <li> <i class="fa fa-car" aria-hidden="true"></i>
+                            <h5><?php echo $result['no_plat'] ?></h5>
+                            <p>Plat Mobil</p>
+                        </li>
                     </ul> 
                 </div>
                 
@@ -93,16 +97,16 @@ if (count($data) > 0) {
                     <div class="form-group">
                         <label class="control-label">Tanggal Peminjaman <span>*</span></label>
                         <input type="datetime-local" class="form-control white_bg" id="tanggalpeminjamanpesan"  min="<?php date_default_timezone_set('asia/jakarta');
-                                                            echo date('Y-m-d\TH:i:s') ?>"
+                                                            echo date('Y-m-d\TH:i:s', strtotime('6 hour')); ?>"
                             name="tanggalpeminjamanpesan" value="<?php date_default_timezone_set('asia/jakarta');
-                            echo date('Y-m-d\TH:i:s'); ?>">
+                            echo date('Y-m-d\TH:i:s', strtotime('6 hour')); ?>">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Tanggal Kembali <span>*</span></label>
                         <input type="datetime-local" min="<?php date_default_timezone_set('asia/jakarta');
-                                                            echo date('Y-m-d\TH:i:s') ?>" class="form-control white_bg"
+                                                            echo date('Y-m-d\TH:i:s', strtotime('7 hour')); ?>" class="form-control white_bg"
                             id="tanggalkembalipesan" name="tanggalkembalipesan" value="<?php date_default_timezone_set('asia/jakarta');
-                            echo date('Y-m-d\TH:i:s') ?>" required>
+                            echo date('Y-m-d\TH:i:s', strtotime('1 day')) ?>" required>
                     </div>
 
                     <div class="form-group">

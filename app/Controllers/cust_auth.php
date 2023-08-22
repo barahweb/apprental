@@ -290,6 +290,7 @@ class cust_auth extends BaseController
 
         $datetime1 = new DateTime($tanggalpeminjaman);
         $datetime2 = new DateTime($tanggalkembali);
+        $sekarang = new DateTime(date("Y-m-d H:i:s"));
         // dd($datetime1, $datetime2);
         $query = $db->query(
             "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
@@ -301,7 +302,16 @@ class cust_auth extends BaseController
         // dd($cek->status);
         if($cek->status == 'Tersedia'){
             if ($datetime2 > $datetime1) {
-                $interval = $datetime1->diff($datetime2);
+                $interval   = $datetime1->diff($datetime2);
+                $interval2  = $sekarang->diff($datetime1);
+                // dd($interval2);
+                if ($interval2->h < 5) {
+                    session()->setFlashdata('status_text', 'Minimal 6 jam dari sekarang untuk pemesanan');
+                    return redirect()->back()
+                        ->with('status_icon', 'error')
+                        ->with('status', 'Gagal!');
+                }
+
                 if ($interval->days < 1) {
                     session()->setFlashdata('status_text', 'Minimal Sewa 1 Hari!');
                     return redirect()->back()
@@ -364,6 +374,15 @@ class cust_auth extends BaseController
     public function lupa()
     {
         return view('tampilanpelanggan/forgotpassword');
+    }
+
+    public function invoice($idTransaksi)
+    {
+        $db = \Config\Database::connect();
+        $data['invoice'] = $db->query(
+            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan)  WHERE id_peminjaman='$idTransaksi';"
+        )->getRow();
+        return view('tampilanpelanggan/invoice', $data);
     }
 
     public function formubah()

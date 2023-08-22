@@ -93,6 +93,41 @@
         .swal2-popup {
             font-size: 1.6rem !important;
         }
+
+        @media print
+        {    
+            .no-print, .no-print *
+            {
+                display: none !important;
+            }
+
+            #printOnly {
+                display: block !important;
+            }
+
+            .user_profile {
+                padding: 10px;
+            }
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: center
+                }
+            img {
+                max-width: 100%;
+                max-height:100%;
+                }
+
+            .text {
+                font-size: 20px;
+                padding-left: 20px;
+            }
+        }
+
+        .tengah {
+            text-align: center;
+        }
+        
     </style>
     <script>
         $(document).ready(function() {
@@ -474,6 +509,8 @@
 
     </script>
     
+
+
 </body>
 
 </html>
