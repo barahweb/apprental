@@ -37,6 +37,7 @@
                                 <th>Gender</th>
                                 <th>No Telepon</th>
                                 <th>No Identitas</th>
+                                <th>Harga Sewa</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                     <td> <?= $record['gender'] ?> </td>
                                     <td> <?= $record['no_telepon'] ?> </td>
                                     <td> <?= $record['no_ktp'] ?> </td>
+                                    <td>Rp <?= number_format($record['harga_sewa'], 0, ",", ".") ?> </td>
                                     <td>
                                         <a href="/ubah_sopir/<?= $record['id_sopir']; ?>" class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-edit"></i></a>
@@ -66,10 +68,10 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Apakah Anda yakin ingin menghapus Pelanggan <b><?= $record['nama_sopir']; ?></b>?</p>
+                                                    <p>Apakah Anda yakin ingin menghapus sopir <b><?= $record['nama_sopir']; ?></b>?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a type="button" class="btn btn-primary" href="/delete_pelanggan/<?= $record['id_sopir']; ?>">Ya</a>
+                                                    <a type="button" class="btn btn-primary" href="/delete_sopir/<?= $record['id_sopir']; ?>">Ya</a>
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
                                                 </div>
                                             </div>

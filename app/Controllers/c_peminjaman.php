@@ -160,6 +160,19 @@ class c_peminjaman extends BaseController
         $query = $db->query(
             "UPDATE transaksi_peminjaman SET id_customerservice ='$customerservice', status_peminjaman='4',tgl_pengembalian ='$tanggalpengembalian', status_pengembalian='$status_pengembalian', denda='$denda1' WHERE id_peminjaman='$id_peminjaman';"
         );
+
+        $selectSopir = $db->query(
+            "SELECT * FROM transaksi_peminjaman WHERE id_peminjaman='$id_peminjaman';"
+            )->getRow();
+
+
+        if ($selectSopir->id_sopir != NULL) {
+            $query2 = $db->query(
+                "UPDATE sopir SET ketersediaan = NULL WHERE id_sopir='$selectSopir->id_sopir';"
+            );
+        }
+
+
         session()->setFlashdata('status_text', 'Transaksi Berhasil Diubah!');
         return redirect()->to('pengembalian')
             ->with('status_icon', 'success')

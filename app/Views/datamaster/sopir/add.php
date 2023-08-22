@@ -56,6 +56,13 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="no_telepon" placeholder="Masukkan No Telepon" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>
                     </div>
+                    <label for="Harga Sewa">Harga Sewa Sopir</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="text" class="form-control" name="harga_sewa" placeholder="Masukkan Harga" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" value="<?= old('harga_sewa'); ?>" required>
+                    </div>
                     <label for="No Identitas">No Identitas</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="no_ktp" placeholder="Masukkan No Identitas" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>

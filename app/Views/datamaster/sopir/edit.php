@@ -63,6 +63,13 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="no_telepon" autocomplete="off" value="<?= $us['no_telepon']; ?>" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>
                         </div>
+                        <label for="Harga">Harga Sewa</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            <input type="text" class="form-control" name="harga_sewa" autocomplete="off" value="<?= number_format($us['harga_sewa'], 0, ",", "."); ?>" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" value="<?= old('jumlah'); ?>" required>
+                        </div>
                         <label for="No Identitas">No Identitas</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="no_ktp" autocomplete="off" value="<?= $us['no_ktp']; ?>" onkeypress="return event.charCode >= 48 && event.charCode <=57" required>

@@ -41,12 +41,15 @@ class c_sopir extends BaseController
 
 	public function simpan()
 	{
+		$harga1 = $this->request->getVar('harga_sewa');
+		$harga = str_replace(".", "", $harga1);
 		$data = [
 			'nama_sopir' => $this->request->getVar('nama_sopir'),
-			'status' => $this->request->getVar('status'),
 			'alamat' => $this->request->getVar('alamat'),
 			'gender' => $this->request->getVar('gender'),
 			'no_telepon' => $this->request->getVar('no_telepon'),
+			'status' => $this->request->getVar('ketersediaan'),
+			'harga_sewa' => $harga,
 			'no_ktp' => $this->request->getVar('no_ktp'),
 		];
 		// dd($data);
@@ -63,10 +66,14 @@ class c_sopir extends BaseController
 		$alamat = $this->request->getVar('alamat');
 		$status = $this->request->getVar('status');
 		$no_telepon = $this->request->getVar('no_telepon');
+		
+		$harga1 = $this->request->getVar('harga_sewa');
+		$harga = str_replace(".", "", $harga1);
+
 		$no_ktp = $this->request->getVar('no_ktp');
 		$db = \Config\Database::connect();
 		$query = $db->query(
-			"UPDATE sopir SET nama_sopir='$nama_sopir', alamat='$alamat', gender ='$gender', no_telepon='$no_telepon', status ='$status', no_ktp='$no_ktp' WHERE id_sopir='$kode';"
+			"UPDATE sopir SET nama_sopir='$nama_sopir', alamat='$alamat', gender ='$gender', no_telepon='$no_telepon', harga_sewa = '$harga', status ='$status', no_ktp='$no_ktp' WHERE id_sopir='$kode';"
 		);
 		session()->setFlashdata('status_text', 'Data Berhasil Diubah!');
 

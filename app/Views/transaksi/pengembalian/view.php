@@ -55,12 +55,12 @@ function getBulan($bln)
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Transaksi Pengembalian</h1>
+                <h1 class="m-0">Transaksi Berjalan</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item active">Transaksi Pengembalian</li>
+                    <li class="breadcrumb-item active">Transaksi Berjalan</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -81,6 +81,7 @@ function getBulan($bln)
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Pelanggan</th>
+                                <th>Sopir</th>
                                 <th>Merk Mobil</th>
                                 <th>Plat Mobil</th>
                                 <th>Tanggal Peminjaman</th>
@@ -92,10 +93,19 @@ function getBulan($bln)
                         <tbody>
                             <?php
                             $no = 1;
+                            $db = \Config\Database::connect();
+
                             foreach ($data as $record) : ?>
+                            <?php 
+                                $idSopir = $record['id_sopir'];
+                                if ($idSopir != NULL) {
+                                    $sql = $db->query("SELECT * from sopir where id_sopir = $idSopir")->getRow();
+                                } 
+                                                        ?>
                                 <tr class="text-center">
                                     <th scope="row"><?= $no++; ?></th>
                                     <td class="text-center"><?= $record['nama']; ?></td>
+                                    <td class="text-center"><?= $sql->nama_sopir ?? '-' ?></td>
                                     <td class="text-center"><?= $record['merk']; ?></td>
                                     <td class="text-center"><?= $record['no_plat']; ?></td>
                                     <td class="text-center"><?php echo date('H:i:s', strtotime($record['tgl_peminjaman'])). '<br>'. tgl_indo($record['tgl_peminjaman'])  ?></td>
