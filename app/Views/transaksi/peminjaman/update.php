@@ -79,15 +79,24 @@
 
                                     <?php
                                         // untuk menghitung selisih hari terlambat
-                                        $t = date_create($us['tgl_kembali']);
-                                        $n = date_create(date('Y-m-d'));
-                                        $terlambat = date_diff($t, $n);
-                                        $hari = $terlambat->format("%a");
+                                        // $t = date_create($us['tgl_kembali']);
+                                        // $n = date_create(date('Y-m-d'));
+                                        // $terlambat = date_diff($t, $n);
+                                        // $hari = $terlambat->format("%a");
 
                                         // menghitung denda
-                                        $denda = $hari * $us['harga_peminjaman'];
+
+
+                                        $today = date("Y-m-d H:i:s");
+                                        $date = $us['tgl_kembali'];
+
+
+                                        $start_datetime = new DateTime($today); 
+                                        $diff = $start_datetime->diff(new DateTime($date)); 
+                                        $denda = $diff->days * $us['harga_peminjaman'];
                                         ?>
-                                <input type="text"   <?php if ($jam->jam >= $us['tgl_kembali']) : ?> value="<?= number_format($denda, 0, ",", "."); ?>" <?php endif; ?> class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
+
+                                <input type="text"   <?php if ($date < $today) : ?> value="<?= number_format($denda, 0, ",", "."); ?>" <?php endif; ?> class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
                                 </div>
                                 <label for="Harga">Harga Peminjaman</label>
                                 <div class="input-group mb-3">
