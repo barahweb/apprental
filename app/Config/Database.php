@@ -35,7 +35,7 @@ class Database extends Config
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'pemesananmobil',
+		'database' => 'pemesananmobil3',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
