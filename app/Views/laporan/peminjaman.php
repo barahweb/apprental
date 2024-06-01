@@ -59,9 +59,9 @@ function getBulan($bln)
         <div class="col-sm">
 
             <strong>
-                <div class="mt-5" style="font-size: 50px;text-align: center;">Yaka Transport</div>
+                <div class="mt-5" style="font-size: 50px;text-align: center;">MTG Trans</div>
             </strong>
-            <div class="tengah" style="font-size: 25px;">Jl. Plemburan, Sedan, Sariharjo, Kec. Ngaglik </div>
+            <div class="tengah" style="font-size: 25px;">Jl Pogung Kidul No.25, Sinduadi, Kec. Mlati </div>
             <div class="tengah" style="font-size: 25px;">Kabupaten Sleman, Daerah Istimewa Yogyakarta </div>
         </div>
     </div>
@@ -186,7 +186,7 @@ function getBulan($bln)
     </div>
     <div class="kanan" hidden>
         <div class="col-sm-12">
-            <p class="col " style="margin-left: 300px; margin-top: 760px;">HP: 0812-2638-5760 & Email: yakatransport@gmail.com</p>
+            <p class="col " style="margin-left: 300px; margin-top: 760px;">HP: 0813-9376-5850 & Email: mtgtransport@gmail.com</p>
         </div>
     </div>
 

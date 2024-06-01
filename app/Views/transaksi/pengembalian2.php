@@ -59,9 +59,9 @@ function getBulan($bln)
         <div class="col-sm">
 
             <strong>
-                <div class="mt-5" style="font-size: 50px;text-align: center;">Yaka Transport</div>
+                <div class="mt-5" style="font-size: 50px;text-align: center;">MTG Trans</div>
             </strong>
-            <div class="tengah" style="font-size: 25px;">Jl. Plemburan, Sedan, Sariharjo, Kec. Ngaglik </div>
+            <div class="tengah" style="font-size: 25px;">Jl Pogung Kidul No.25, Sinduadi, Kec. Mlati </div>
             <div class="tengah" style="font-size: 25px;">Kabupaten Sleman, Daerah Istimewa Yogyakarta </div>
 
         </div>

@@ -19,7 +19,7 @@ class cust_auth extends BaseController
         //     "select * from motor join type using(id_type) where id_motor='$merk' and id_type='$type' and status='tersedia'"
         // )->getResultArray();
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilanpelanggan/dashboard', $data);
     }
@@ -27,14 +27,14 @@ class cust_auth extends BaseController
     public function login()
     {
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilanpelanggan/login', $data);
     }
     public function pesanansaya()
     {
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilanpelanggan/pesanansaya', $data);
     }
@@ -58,7 +58,7 @@ class cust_auth extends BaseController
         }
         $sql = $db->query("SELECT * from transaksi_peminjaman join motor using(id_motor) join type using(id_type) where id_pelanggan='$useremail' and id_peminjaman='$id_peminjaman';")->getResultArray();
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
             'sql' => $sql,
             'hargapeminjaman' => $jumlahhargapeminjaman
         );
@@ -91,14 +91,14 @@ class cust_auth extends BaseController
     public function daftar()
     {
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilanpelanggan/registration', $data);
     }
     public function listmotor()
     {
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilanpelanggan/listmotor', $data);
     }

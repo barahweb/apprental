@@ -6,7 +6,7 @@
         <div class="header">
             <h3>Get Your</h3>
             <h1>Favorite Car</h1>
-            <h3>in <span>Yaka Transport</span></h3>
+            <h3>in <span>MTG Trans</span></h3>
             <br>
             <a href="/listmotor">
             <button>FIND NOW</button>

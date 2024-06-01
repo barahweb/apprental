@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Yaka Transport</title>
+    <title>MTG Trans</title>
 
     <!-- Custom fonts for this template-->
     <!-- Select2 -->

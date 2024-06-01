@@ -17,7 +17,7 @@ class peminjaman_auth extends BaseController
     public function index()
     {
         $data = array(
-            'title' => 'Yaka Transport',
+            'title' => 'MTG Trans',
         );
         return view('tampilan/dashboard', $data);
     }
