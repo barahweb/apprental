@@ -21,7 +21,7 @@ class c_pelanggan extends BaseController
 
 		$this->db = \Config\Database::connect();
 		$this->builder = $this->db->table('transaksi_peminjaman');
-		\Midtrans\Config::$serverKey = 'SB-Mid-server-oHkPnA9a17TlNUEgoymEqZAH';
+		\Midtrans\Config::$serverKey = 'SB-Mid-server-C3lYocT94AWARbz1IMDL0JdX';
 		// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
 		\Midtrans\Config::$isProduction = false;
 		// Set sanitization on (default)
