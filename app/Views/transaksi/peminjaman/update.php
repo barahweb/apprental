@@ -47,17 +47,17 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-                                <label for="Mobil">Mobil</label>
+                                <label for="Motor">Motor</label>
                                 <div class="input-group mb-3">
-                                    <select class="form-control select2" id="mobil" name="mobil" required disabled>
+                                    <select class="form-control select2" id="motor" name="motor" required disabled>
                                         <option value="" hidden selected disabled>-- Pilih --</option>
                                         <?php foreach ($peminjaman as $kat) : ?>
-                                            <option value=" <?= $kat['id_mobil']; ?>" <?php if ($kat['id_mobil'] == $mobil->id_mobil) {
+                                            <option value=" <?= $kat['id_motor']; ?>" <?php if ($kat['id_motor'] == $motor->id_motor) {
                                                                                             echo 'selected';
                                                                                         } ?>><?= $kat['merk']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
-                                    <input type="hidden" class="form-control" name="id_mobil" value="<?= $us['id_mobil']; ?>" required readonly>
+                                    <input type="hidden" class="form-control" name="id_motor" value="<?= $us['id_motor']; ?>" required readonly>
                                 </div>
                                 <label for="Tanggal peminjaman">Tanggal Peminjaman</label>
                                 <div class="input-group mb-3">

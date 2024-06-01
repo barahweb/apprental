@@ -36,17 +36,17 @@ $routes->setAutoRoute(true);
 $routes->get('/logincust', 'cust_auth::login');
 $routes->get('/daftarcust', 'cust_auth::daftar');
 $routes->get('/lupa_passwordcust', 'cust_auth::lupa');
-$routes->get('/listmobil', 'cust_auth::listmobil');
-$routes->post('/hasilcarimobil', 'cust_auth::hasilcarimobil');
+$routes->get('/listmotor', 'cust_auth::listmotor');
+$routes->post('/hasilcarimotor', 'cust_auth::hasilcarimotor');
 $routes->post('/datadaftarcust', 'cust_auth::datadaftarcust');
-$routes->get('/detailmobil/(:segment)', 'cust_auth::detailmobil/$1');
+$routes->get('/detailmotor/(:segment)', 'cust_auth::detailmotor/$1');
 
 $routes->get('/invoice/(:segment)', 'cust_auth::invoice/$1');
 
 $routes->get('/formpesan/(:segment)', 'cust_auth::formpesan/$1', ['filter' => 'logincust']);
 $routes->post('/pesansekarang', 'cust_auth::pesansekarang');
 $routes->get('/checkout', 'cust_auth::checkout');
-$routes->post('/cekMobil', 'cust_auth::cekMobil');
+$routes->post('/cekMotor', 'cust_auth::cekMotor');
 $routes->post('/token', 'c_pelanggan::token');
 $routes->post('/selesai', 'c_pelanggan::selesai');
 $routes->post('/bayar', 'c_pelanggan::bayar');
@@ -101,12 +101,12 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 
 
 
-	$routes->get('/mobil', 'c_mobil::index');
-	$routes->get('/mobil/tambah', 'c_mobil::inputdata');
-	$routes->post('/mobil/simpan', 'c_mobil::simpan');
-	$routes->get('/ubahmobil/(:segment)', 'c_mobil::keformedit/$1');
-	$routes->post('/ubah_mobil/(:segment)', 'c_mobil::updatemobil/$1');
-	$routes->get('/delete_mobil/(:segment)', 'c_mobil::hapusmobil/$1');
+	$routes->get('/motor', 'c_motor::index');
+	$routes->get('/motor/tambah', 'c_motor::inputdata');
+	$routes->post('/motor/simpan', 'c_motor::simpan');
+	$routes->get('/ubahmotor/(:segment)', 'c_motor::keformedit/$1');
+	$routes->post('/ubah_motor/(:segment)', 'c_motor::updatemotor/$1');
+	$routes->get('/delete_motor/(:segment)', 'c_motor::hapusmotor/$1');
 
 
 	$routes->get('/type', 'c_type::index');

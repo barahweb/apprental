@@ -103,12 +103,12 @@ function getBulan($bln)
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <label for="Mobil">Mobil</label>
+                            <label for="Motor">Motor</label>
                             <div class="input-group mb-3">
-                                <select class="form-control select2" id="mobilInput" name="mobil" required>
+                                <select class="form-control select2" id="motorInput" name="motor" required>
                                     <option value="" hidden selected disabled>-- Pilih --</option>
-                                    <?php foreach ($mobil as $mobil) : ?>
-                                        <option value="<?= $mobil['id_mobil']; ?>"><?= $mobil['merk']; ?> || <?=$mobil['no_plat']; ?></option>
+                                    <?php foreach ($motor as $motor) : ?>
+                                        <option value="<?= $motor['id_motor']; ?>"><?= $motor['merk']; ?> || <?=$motor['no_plat']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

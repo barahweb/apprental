@@ -285,7 +285,7 @@
     <script type="text/javascript">
         function transaksi(ars, result) {
             const id_pelanggan = ars[1]
-            const id_mobil = ars[2]
+            const id_motor = ars[2]
             let harga_total = ars[5]
             const tanggal_mulai = ars[3]
             const tanggal_selesai = ars[4]
@@ -309,7 +309,7 @@
                         // console.log(formData)
                         swal.fire({
                             title: "Berhasil!",
-                            text: "Mobil Berhasil dipesan!",
+                            text: "Motor Berhasil dipesan!",
                             icon: "success",
                             button: "Ok",
                         }).then(function() {
@@ -318,11 +318,11 @@
                     } else {
                         swal.fire({
                             title: "Gagal!",
-                            text: "Mobil tidak dapat dipesan!",
+                            text: "Motor tidak dapat dipesan!",
                             icon: "error",
                             button: "Ok",
                         }).then(function() {
-                            window.location.href = "/formpesan/" + id_mobil;
+                            window.location.href = "/formpesan/" + id_motor;
                         });
                     }
                 }
@@ -332,8 +332,8 @@
             event.preventDefault();
             let id_peminjaman = document.getElementById("id_peminjamanCO").value
             let id_pelanggan = document.getElementById("id_pelangganCO").value
-            let id_mobil = document.getElementById("id_mobilCO").value
-            let mobil = document.getElementById("mobilCO").value
+            let id_motor = document.getElementById("id_motorCO").value
+            let motor = document.getElementById("motorCO").value
             let hargaMT = document.getElementById("hargaMT").value
             let tanggalpeminjaman1 = document.getElementById("tanggalpeminjaman").value
             let tanggalpeminjaman = tanggalpeminjaman1.replace("T", " ")
@@ -346,11 +346,11 @@
             const ars = [
                 id_peminjaman,
                 id_pelanggan,
-                id_mobil,
+                id_motor,
                 tanggalpeminjaman,
                 tanggalkembali,
                 hargaMT,
-                mobil,
+                motor,
                 id_sopir
             ]
             $.ajax({
@@ -361,11 +361,11 @@
                     ars,
                     id_peminjaman,
                     id_pelanggan,
-                    id_mobil,
+                    id_motor,
                     tanggalpeminjaman,
                     tanggalkembali,
                     hargaMT,
-                    mobil,
+                    motor,
                     id_sopir
                 },
                 dataType: "json",
@@ -411,17 +411,17 @@
             let mulai = mulai1.replace("T", " ")
             let selesai1 = $("#tanggalkembalipesan").val()
             let selesai = selesai1.replace("T", " ")
-            let id_mobilPesan = $("#id_mobilPesan").val()
-            console.log(mulai, selesai, id_mobilPesan)
+            let id_motorPesan = $("#id_motorPesan").val()
+            console.log(mulai, selesai, id_motorPesan)
             $.ajax({
                 method: "post",
                 data: {
                     mulai,
                     selesai,
-                    id_mobilPesan
+                    id_motorPesan
                 },
                 dataType: "json",
-                url: "/cekMobil",
+                url: "/cekMotor",
                 success: res => {
                     console.log(res)
                     if (res.res) {

@@ -21,7 +21,7 @@ class pengembalian extends BaseController
         $tanggalakhir = date('Y-m-d');
         $db = \Config\Database::connect();
         $query = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan) where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan) where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'"
         )->getResultArray();
         $harga = $db->query("SELECT COALESCE(SUM(harga_peminjaman), 0) AS harga, COALESCE(SUM(denda), 0) AS denda FROM transaksi_peminjaman where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'")->getResultArray();
         $data = [
@@ -40,7 +40,7 @@ class pengembalian extends BaseController
         $tanggalakhir = $this->request->getVar('tanggalakhir');
         $db = \Config\Database::connect();
         $query = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan) where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan) where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'"
         )->getResultArray();
         $harga = $db->query("SELECT COALESCE(SUM(harga_peminjaman), 0) AS harga, COALESCE(SUM(denda), 0) AS denda FROM transaksi_peminjaman where status_peminjaman= 4 and date(tgl_peminjaman) between '$tanggalawal' AND '$tanggalakhir'")->getResultArray();
         $data = [

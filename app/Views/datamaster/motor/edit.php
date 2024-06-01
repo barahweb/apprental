@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/mobil">Data Mobil</a></li>
+                    <li class="breadcrumb-item"><a href="/motor">Data Motor</a></li>
                     <li class="breadcrumb-item active"> <?= $judul; ?></li>
                 </ol>
             </div><!-- /.col -->
@@ -27,8 +27,8 @@
                 </h3>
             </div>
             <div class="card-body">
-                <?php foreach ($mobil as $us) : ?>
-                    <form action="/ubah_mobil/<?= $us['id_mobil']; ?>" method="post" enctype="multipart/form-data">
+                <?php foreach ($motor as $us) : ?>
+                    <form action="/ubah_motor/<?= $us['id_motor']; ?>" method="post" enctype="multipart/form-data">
                         <label for="Merk">Merk</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="merk" autocomplete="off" value="<?= $us['merk']; ?>" required>

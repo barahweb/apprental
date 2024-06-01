@@ -79,7 +79,7 @@ function getBulan($bln)
                             <?php
                             $useremail =  session()->get('id_pelanggan');
                             $db = \Config\Database::connect();
-                            $sql = $db->query("SELECT * from transaksi_peminjaman join mobil using(id_mobil) join type using(id_type) where id_pelanggan='$useremail' ORDER BY tgl_peminjaman DESC;")->getResultArray();
+                            $sql = $db->query("SELECT * from transaksi_peminjaman join motor using(id_motor) join type using(id_type) where id_pelanggan='$useremail' ORDER BY tgl_peminjaman DESC;")->getResultArray();
                             $cnt = 1;
                             if (count($sql) > 0) {
                                 foreach ($sql as $result) {  ?>

@@ -16,7 +16,7 @@ class cust_auth extends BaseController
     {
         $db = \Config\Database::connect();
         // $query = $db->query(
-        //     "select * from mobil join type using(id_type) where id_mobil='$merk' and id_type='$type' and status='tersedia'"
+        //     "select * from motor join type using(id_type) where id_motor='$merk' and id_type='$type' and status='tersedia'"
         // )->getResultArray();
         $data = array(
             'title' => 'Yaka Transport',
@@ -44,7 +44,7 @@ class cust_auth extends BaseController
         $db = \Config\Database::connect();
         $cektglawal = $db->query("select tgl_peminjaman from transaksi_peminjaman where id_pelanggan ='$useremail' and id_peminjaman='$id_peminjaman'")->getRow();
         $cektglkembali = $db->query("select tgl_kembali from transaksi_peminjaman where id_pelanggan ='$useremail' and id_peminjaman='$id_peminjaman'")->getRow();
-        $cekharga = $db->query("select harga from mobil join transaksi_peminjaman using(id_mobil) where id_pelanggan ='$useremail' and id_peminjaman='$id_peminjaman'")->getRow();
+        $cekharga = $db->query("select harga from motor join transaksi_peminjaman using(id_motor) where id_pelanggan ='$useremail' and id_peminjaman='$id_peminjaman'")->getRow();
         $tgl_peminjaman = strtotime($cektglawal->tgl_peminjaman);
         $tgl_kembali = strtotime($cektglkembali->tgl_kembali);
         $datediff = $tgl_kembali - $tgl_peminjaman;
@@ -56,7 +56,7 @@ class cust_auth extends BaseController
         } else {
             $jumlahhargapeminjaman = $tglakhir * $cekharga->harga;
         }
-        $sql = $db->query("SELECT * from transaksi_peminjaman join mobil using(id_mobil) join type using(id_type) where id_pelanggan='$useremail' and id_peminjaman='$id_peminjaman';")->getResultArray();
+        $sql = $db->query("SELECT * from transaksi_peminjaman join motor using(id_motor) join type using(id_type) where id_pelanggan='$useremail' and id_peminjaman='$id_peminjaman';")->getResultArray();
         $data = array(
             'title' => 'Yaka Transport',
             'sql' => $sql,
@@ -95,12 +95,12 @@ class cust_auth extends BaseController
         );
         return view('tampilanpelanggan/registration', $data);
     }
-    public function listmobil()
+    public function listmotor()
     {
         $data = array(
             'title' => 'Yaka Transport',
         );
-        return view('tampilanpelanggan/listmobil', $data);
+        return view('tampilanpelanggan/listmotor', $data);
     }
 
 
@@ -114,7 +114,7 @@ class cust_auth extends BaseController
         return redirect()->to(base_url('/logincust'));
     }
 
-    public function hasilcarimobil()
+    public function hasilcarimotor()
     {
         $merk = $this->request->getVar('merk');
         $type = $this->request->getVar('type');
@@ -127,20 +127,20 @@ class cust_auth extends BaseController
         if ($type == 'Pilih Type' or $merk == 'Pilih Merk') {
         
             $query = $db->query(
-                "select * from mobil join type using(id_type) where merk='$merk' or id_type='$type' and status='tersedia'"
+                "select * from motor join type using(id_type) where merk='$merk' or id_type='$type' and status='tersedia'"
             )->getResultArray();
 
             $query2 = $db->query(
-                "select count(id_mobil) as mobil from mobil join type using(id_type) where merk='$merk' or id_type='$type' and status='tersedia'"
+                "select count(id_motor) as motor from motor join type using(id_type) where merk='$merk' or id_type='$type' and status='tersedia'"
             )->getRow();
             
         } else {
             $query = $db->query(
-                "select * from mobil join type using(id_type) where merk='$merk' and id_type='$type' and status='tersedia'"
+                "select * from motor join type using(id_type) where merk='$merk' and id_type='$type' and status='tersedia'"
             )->getResultArray();
 
             $query2 = $db->query(
-                "select count(id_mobil) as mobil from mobil join type using(id_type) where merk='$merk' and id_type='$type' and status='tersedia'"
+                "select count(id_motor) as motor from motor join type using(id_type) where merk='$merk' and id_type='$type' and status='tersedia'"
             )->getRow();
         }
 
@@ -152,36 +152,36 @@ class cust_auth extends BaseController
             'type' => $type
         ];
         // dd($query);
-        return view('tampilanpelanggan/hasilcarimobil', $data);
+        return view('tampilanpelanggan/hasilcarimotor', $data);
     }
 
-    public function detailmobil($id_mobil)
+    public function detailmotor($id_motor)
     {
-        // $id_mobil = $this->request->getVar('id_mobil');
+        // $id_motor = $this->request->getVar('id_motor');
         $db = \Config\Database::connect();
         $query = $db->query(
-            "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
+            "select * from motor join type using(id_type) where id_motor='$id_motor'"
         )->getResultArray();
         // dd($query);
         $data = [
             'data' => $query
         ];
         // dd($query);
-        return view('tampilanpelanggan/detailmobil', $data);
+        return view('tampilanpelanggan/detailmotor', $data);
     }
-    public function formpesan($id_mobil)
+    public function formpesan($id_motor)
     {
-        // $id_mobil = $this->request->getVar('id_mobil');
+        // $id_motor = $this->request->getVar('id_motor');
         $db = \Config\Database::connect();
         $cek = $db->query(
-            "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
+            "select * from motor join type using(id_type) where id_motor='$id_motor'"
         )->getRow();
         $cekuser =  session()->get('id_pelanggan');
         $cekdatapesan = $db->query(
             "SELECT * FROM transaksi_peminjaman WHERE id_pelanggan='$cekuser' AND status_peminjaman < 4"
         )->getResultArray();
         if($cek->status == 'Tidak Tersedia'){
-            session()->setFlashdata('status_text', 'Mobil Tidak Tersediaa!');
+            session()->setFlashdata('status_text', 'Motor Tidak Tersediaa!');
             return redirect()->back()
                 ->with('status_icon', 'error')
                 ->with('status', 'Gagal!');
@@ -193,7 +193,7 @@ class cust_auth extends BaseController
                     ->with('status', 'Gagal!');
             } else {
                 $query = $db->query(
-                    "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
+                    "select * from motor join type using(id_type) where id_motor='$id_motor'"
                 )->getResultArray();
                 date_default_timezone_set("Asia/Jakarta");
                 $date = date("Y-m-d");
@@ -213,19 +213,19 @@ class cust_auth extends BaseController
                 $pelanggan = $db->query(
                     "SELECT * FROM pelanggan"
                 )->getResultArray();
-                $mobil = $db->query(
-                    "SELECT * FROM mobil where status='Tersedia'"
+                $motor = $db->query(
+                    "SELECT * FROM motor where status='Tersedia'"
                 )->getResultArray();
             }
-            $cekjamMobil = $db->query("SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) WHERE STATUS='Tersedia' AND id_mobil='$id_mobil' AND tgl_peminjaman AND tgl_kembali >= CURDATE() AND status_peminjaman < 4")->getResultArray();
+            $cekjamMotor = $db->query("SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) WHERE STATUS='Tersedia' AND id_motor='$id_motor' AND tgl_peminjaman AND tgl_kembali >= CURDATE() AND status_peminjaman < 4")->getResultArray();
     
             // dd($query);
             $data = [
                 'data' => $query,
                 'kdpeminjaman' => $kdpeminjaman,
                 'pelanggan' => $pelanggan,
-                'mobil' => $mobil,
-                'cekjamMobil' => $cekjamMobil
+                'motor' => $motor,
+                'cekjamMotor' => $cekjamMotor
             ];
             // dd($data);
             return view('tampilanpelanggan/formpesan', $data);
@@ -252,15 +252,15 @@ class cust_auth extends BaseController
     }
 
 
-    public function cekMobil(){
-        $id_mobil = $this->request->getVar('id_mobilPesan');
+    public function cekMotor(){
+        $id_motor = $this->request->getVar('id_motorPesan');
         $mulai = $this->request->getVar('mulai');
         $selesai = $this->request->getVar('selesai');
         $db = \Config\Database::connect();
-        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN mobil using(id_mobil) WHERE tgl_peminjaman > '$mulai' AND tgl_kembali < '$selesai' AND id_mobil = '$id_mobil' AND  status_peminjaman < '4'
+        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN motor using(id_motor) WHERE tgl_peminjaman > '$mulai' AND tgl_kembali < '$selesai' AND id_motor = '$id_motor' AND  status_peminjaman < '4'
         UNION
-        SELECT * FROM transaksi_peminjaman JOIN mobil  using(id_mobil) WHERE tgl_kembali>'$mulai' AND tgl_peminjaman < '$selesai' AND id_mobil = '$id_mobil'AND  status_peminjaman < '4'")->getRowArray();
-        $pesan = $sql > 0 ? 'Mobil sedang digunakan' : '';
+        SELECT * FROM transaksi_peminjaman JOIN motor  using(id_motor) WHERE tgl_kembali>'$mulai' AND tgl_peminjaman < '$selesai' AND id_motor = '$id_motor'AND  status_peminjaman < '4'")->getRowArray();
+        $pesan = $sql > 0 ? 'Motor sedang digunakan' : '';
         echo json_encode([
             'res' => $sql,
             'message' => $pesan
@@ -282,8 +282,8 @@ class cust_auth extends BaseController
         $db = \Config\Database::connect();
 
         $id_peminjaman = $this->request->getVar('id_peminjaman');
-        $merk = $this->request->getVar('mobil');
-        $id_mobil = $this->request->getVar('id_mobilPesan');
+        $merk = $this->request->getVar('motor');
+        $id_motor = $this->request->getVar('id_motorPesan');
         $tanggalpeminjaman = $this->request->getVar('tanggalpeminjamanpesan');
         $tanggalkembali = $this->request->getVar('tanggalkembalipesan');
         $harga = $this->request->getVar('harga');
@@ -293,11 +293,11 @@ class cust_auth extends BaseController
         $sekarang = new DateTime(date("Y-m-d H:i:s"));
         // dd($datetime1, $datetime2);
         $query = $db->query(
-            "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
+            "select * from motor join type using(id_type) where id_motor='$id_motor'"
         )->getResultArray();
 
         $cek = $db->query(
-            "select * from mobil join type using(id_type) where id_mobil='$id_mobil'"
+            "select * from motor join type using(id_type) where id_motor='$id_motor'"
         )->getRow();
         // dd($cek->status);
         if($cek->status == 'Tersedia'){
@@ -333,7 +333,7 @@ class cust_auth extends BaseController
 
                         'kdpeminjaman'          => $id_peminjaman,
                         'data'                  => $query,
-                        'id_mobil'              => $id_mobil,
+                        'id_motor'              => $id_motor,
                         'merk'                  => $merk,
                         'tanggalkembali'        => $tanggalkembali,
                         'tanggalpeminjaman'     => $tanggalpeminjaman,
@@ -351,7 +351,7 @@ class cust_auth extends BaseController
                     ->with('status', 'Gagal!');
             }
         } else {
-            session()->setFlashdata('status_text', 'Mobil Tidak Tersedia!');
+            session()->setFlashdata('status_text', 'Motor Tidak Tersedia!');
             return redirect()->back()
                 ->with('status_icon', 'error')
                 ->with('status', 'Gagal!');
@@ -366,7 +366,7 @@ class cust_auth extends BaseController
         $query2 = $db->query(
             "UPDATE transaksi_peminjaman SET status_peminjaman='4' WHERE id_peminjaman='$id_peminjaman';"
         );
-        session()->setFlashdata('status_text', 'Mobil Sudah Dikembalikan! Transaksi Berhasil.');
+        session()->setFlashdata('status_text', 'Motor Sudah Dikembalikan! Transaksi Berhasil.');
         return redirect()->to(base_url('/pesanancust'))
             ->with('status_icon', 'success')
             ->with('status', 'Berhasil');
@@ -380,7 +380,7 @@ class cust_auth extends BaseController
     {
         $db = \Config\Database::connect();
         $data['invoice'] = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan)  WHERE id_peminjaman='$idTransaksi';"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan)  WHERE id_peminjaman='$idTransaksi';"
         )->getRow();
         return view('tampilanpelanggan/invoice', $data);
     }

@@ -148,8 +148,8 @@ function getBulan($bln)
                             <tr >
                                 <th>No</th>
                                 <th>Pelanggan</th>
-                                <th>Merk Mobil</th>
-                                <th>Plat Mobil</th>
+                                <th>Merk Motor</th>
+                                <th>Plat Motor</th>
                                 <th>Tanggal Pengembalian</th>
                                 <th>Status Pengembalian</th>
                                 <th>Harga Peminjaman</th>

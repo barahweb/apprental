@@ -33,7 +33,7 @@ if (count($data) > 0) {
                             <h5><?php echo $result['tahun'] ?></h5>
                             <p>Model</p>
                         </li>
-                        <li> <i class="fa fa-car" aria-hidden="true"></i>
+                        <li> <i class="fa fa-motorcycle" aria-hidden="true"></i>
                             <h5><?php echo $result['nama_type'] ?></h5>
                             <p>Type</p>
                         </li>
@@ -43,15 +43,15 @@ if (count($data) > 0) {
                             <p>Warna</p>
                         </li>
 
-                        <li> <i class="fa fa-car" aria-hidden="true"></i>
+                        <li> <i class="fa fa-motorcycle" aria-hidden="true"></i>
                             <h5><?php echo $result['no_plat'] ?></h5>
-                            <p>Plat Mobil</p>
+                            <p>Plat Motor</p>
                         </li>
 
                     </ul>
                 </div>
                 <!-- <button class="btn" type="submit" name="send" type="submit" style="margin-top: -76px; margin-left: 1000px;">Pesan <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button> -->
-                <a href="/formpesan/<?= $result['id_mobil']; ?>" style="margin-top: -76px; margin-left: 1000px;"
+                <a href="/formpesan/<?= $result['id_motor']; ?>" style="margin-top: -76px; margin-left: 1000px;"
                     class="btn">Pesan <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 <?php }
         } ?>
@@ -68,28 +68,28 @@ if (count($data) > 0) {
 
         <!--Similar-Cars-->
         <div class="similar_cars">
-            <h3>Mobil Serupa</h3>
+            <h3>Motor Serupa</h3>
             <div class="row">
                 <?php
                         $bid =  session()->get('merk');
                         $db = \Config\Database::connect();
-                        $sql = $db->query("select * from mobil join type using(id_type) where merk='$bid'")->getResultArray();
+                        $sql = $db->query("select * from motor join type using(id_type) where merk='$bid'")->getResultArray();
                         $cnt = 1;
                         if (count($sql) > 0) {
                             foreach ($sql as $result) { ?>
                 <div class="col-md-3 grid_listing">
                     <div class="product-listing-m gray-bg">
-                        <div class="product-listing-img"> <a href="/detailmobil/<?= $result['id_mobil']; ?>"><img
+                        <div class="product-listing-img"> <a href="/detailmotor/<?= $result['id_motor']; ?>"><img
                                     src="<?= base_url() ?>/img/<?= $result['gambar']; ?>" class="img-responsive"
                                     alt="image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="/detailmobil/<?= $result['id_mobil']; ?>"><?php echo $result['merk'] ?> ,
+                            <h5><a href="/detailmotor/<?= $result['id_motor']; ?>"><?php echo $result['merk'] ?> ,
                                     <?php echo $result['nama_type'] ?></a></h5>
                             <p class="list-price">Rp <?= number_format($result['harga'], 0, ",", "."); ?> /Hari</p>
 
                             <ul class="features_list">
-                                <li><i class="fa fa-car" aria-hidden="true"></i><?php echo $result['nama_type'] ?></li>
+                                <li><i class="fa fa-motorcycle" aria-hidden="true"></i><?php echo $result['nama_type'] ?></li>
                                 <li><i class="fa fa-calendar" aria-hidden="true"></i>Model
                                     <?php echo $result['tahun'] ?> </li>
                                 <li><i class="fa fa-cogs" aria-hidden="true"></i>Warna <?php echo $result['warna'] ?>

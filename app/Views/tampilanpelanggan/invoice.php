@@ -123,8 +123,8 @@ function getBulan($bln)
                                     <table class="table table-striped table-hover table-md">
                                         <tr>
                                             <th>No</th>
-                                            <th>Merk Mobil</th>
-                                            <th>Plat Mobil</th>
+                                            <th>Merk Motor</th>
+                                            <th>Plat Motor</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>Tanggal Kembali</th>
                                             <th>Harga Peminjaman</th>

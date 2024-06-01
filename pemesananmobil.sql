@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 100414
  Source Host           : localhost:3306
- Source Schema         : pemesananmobil
+ Source Schema         : pemesananmotor
 
  Target Server Type    : MySQL
  Target Server Version : 100414
@@ -38,11 +38,11 @@ INSERT INTO `customerservice` VALUES (3, 'cs3', '123', 'rian');
 INSERT INTO `customerservice` VALUES (4, 'pemilik', '123', 'pemilik');
 
 -- ----------------------------
--- Table structure for mobil
+-- Table structure for motor
 -- ----------------------------
-DROP TABLE IF EXISTS `mobil`;
-CREATE TABLE `mobil`  (
-  `id_mobil` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `motor`;
+CREATE TABLE `motor`  (
+  `id_motor` int(11) NOT NULL AUTO_INCREMENT,
   `id_customerservice` int(11) NULL DEFAULT NULL,
   `id_type` int(20) NULL DEFAULT NULL,
   `merk` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -52,39 +52,39 @@ CREATE TABLE `mobil`  (
   `status` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `harga` float NULL DEFAULT NULL,
   `gambar` blob NULL,
-  PRIMARY KEY (`id_mobil`) USING BTREE,
+  PRIMARY KEY (`id_motor`) USING BTREE,
   INDEX `id_type`(`id_type`) USING BTREE,
   INDEX `id_admin`(`id_customerservice`) USING BTREE,
-  CONSTRAINT `mobil_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type` (`id_type`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `mobil_ibfk_3` FOREIGN KEY (`id_customerservice`) REFERENCES `customerservice` (`id_customerservice`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `motor_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type` (`id_type`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `motor_ibfk_3` FOREIGN KEY (`id_customerservice`) REFERENCES `customerservice` (`id_customerservice`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of mobil
+-- Records of motor
 -- ----------------------------
-INSERT INTO `mobil` VALUES (31, 1, 8, 'Toyota Yaris', 'Putih', 'AB 3416 RE', 2020, 'Tersedia', 300000, 0x546F796F7461205961726973205465726261727520323031355F312E706E67);
-INSERT INTO `mobil` VALUES (32, 1, 8, 'Toyota Yaris', 'Merah', 'AB 4918 CA', 2020, 'Tersedia', 300000, 0x796172697320323032305F312E6A7067);
-INSERT INTO `mobil` VALUES (33, 1, 8, 'Honda Jazz', 'Hitam', 'AB 3187 AO', 2020, 'Tersedia', 300000, 0x6A617A7A203230323020686974616D5F312E6A7067);
-INSERT INTO `mobil` VALUES (34, 1, 8, 'Honda Brio', 'Kuning', 'AB 5638 CE', 2018, 'Tersedia', 250000, 0x486F6E64612D4272696F2D323031382E706E67);
-INSERT INTO `mobil` VALUES (35, 1, 7, 'Nisan Grand Livina', 'Hitam', 'AB 6391 DE', 2018, 'Tersedia', 275000, 0x6772616E64206C6976696E615F312E6A7067);
-INSERT INTO `mobil` VALUES (36, 1, 6, 'Toyota Avanza Veloz', 'Abu-Abu', 'AB 1069 GA', 2020, 'Tersedia', 275000, 0x76656C6F7A5F312E6A7067);
-INSERT INTO `mobil` VALUES (37, 1, 6, 'Mitsubishi Expander', 'Silver', 'AB 1069 YI', 2019, 'Tersedia', 300000, 0x657870616E6465725F312E6A7067);
-INSERT INTO `mobil` VALUES (38, 1, 7, 'Toyota Kijang Inova', 'Hitam', 'AB 6391 CA', 2016, 'Tersedia', 300000, 0x6B696A616E6720696E6F76615F312E706E67);
-INSERT INTO `mobil` VALUES (39, 1, 8, 'Daihatsu Ayla', 'Merah', 'AB 7428 OG', 2018, 'Tersedia', 250000, 0x61796C61206D657261685F312E6A7067);
-INSERT INTO `mobil` VALUES (40, 1, 6, 'Toyota Avanza', 'Hitam', 'AB 4635 DA', 2017, 'Tersedia', 275000, 0x6176616E7A6120686974616D5F312E6A7067);
-INSERT INTO `mobil` VALUES (41, 1, 6, 'Toyota Avanza', 'Silver', 'AB 3315 XK', 2016, 'Tersedia', 250000, 0x31316176616E7A61206162752E6A7067);
-INSERT INTO `mobil` VALUES (42, 1, 6, 'Toyota Avanza', 'Putih', 'AB 2810 EA', 2019, 'Tersedia', 250000, 0x31326176616E7A612070757469682E6A7067);
-INSERT INTO `mobil` VALUES (43, 1, 8, 'Honda Brio', 'Putih', 'AB 3810 EO', 2014, 'Tersedia', 250000, 0x31336272696F2070757469682E6A7067);
-INSERT INTO `mobil` VALUES (44, 1, 9, ' Toyota Kijang Innova Reborn', 'Putih', 'B 1510 RDA', 2019, 'Tersedia', 350000, 0x31347265626F726E2E706E67);
-INSERT INTO `mobil` VALUES (45, 1, 8, 'Honda Brio Satya', 'Hitam', 'AB 4873 XK', 2019, 'Tersedia', 250000, 0x31356272696F20736174796120686974616D2E706E67);
-INSERT INTO `mobil` VALUES (46, 1, 8, 'Honda Brio Satya', 'Putih', 'AB 3810 VO', 2020, 'Tersedia', 250000, 0x31366272696F2073617479612070757469682E706E67);
-INSERT INTO `mobil` VALUES (47, 1, 6, 'Toyota Calya', 'Silver Metalic', 'AB 3810 EE', 2019, 'Tersedia', 250000, 0x313763616C6C79612E6A7067);
-INSERT INTO `mobil` VALUES (48, 1, 6, 'Toyota Calya', 'Putih', 'AB 3810 RO', 2018, 'Tersedia', 250000, 0x313863616C79612070757475682E6A7067);
-INSERT INTO `mobil` VALUES (49, 1, 6, 'Honda Jazz', 'Silver Metalic', 'AB 5730 AA', 2017, 'Tersedia', 275000, 0x31396A617A7A323031342E6A7067);
-INSERT INTO `mobil` VALUES (50, 1, 8, 'Honda Jazz', 'Merah', 'AB 1715 XK', 2019, 'Tersedia', 275000, 0x32306A617A7A20323032302E6A7067);
-INSERT INTO `mobil` VALUES (51, 1, 10, ' Toyota Kijang Innova', 'Silver Metalic', 'AB 3825 EA', 2015, 'Tersedia', 350000, 0x3231696E6F766120646973656C2E6A7067);
-INSERT INTO `mobil` VALUES (52, 1, 10, 'Mitsubishi Pajero Sport', 'Hitam', 'AB 3811 VO', 2018, 'Tersedia', 450000, 0x323270616A65726F20686974616D2E6A7067);
-INSERT INTO `mobil` VALUES (53, 1, 7, 'Toyota', 'Biru', 'AB2310IA', 2023, 'Tersedia', 20000, 0x466750596A325456734145746375412E6A7067);
+INSERT INTO `motor` VALUES (31, 1, 8, 'Toyota Yaris', 'Putih', 'AB 3416 RE', 2020, 'Tersedia', 300000, 0x546F796F7461205961726973205465726261727520323031355F312E706E67);
+INSERT INTO `motor` VALUES (32, 1, 8, 'Toyota Yaris', 'Merah', 'AB 4918 CA', 2020, 'Tersedia', 300000, 0x796172697320323032305F312E6A7067);
+INSERT INTO `motor` VALUES (33, 1, 8, 'Honda Jazz', 'Hitam', 'AB 3187 AO', 2020, 'Tersedia', 300000, 0x6A617A7A203230323020686974616D5F312E6A7067);
+INSERT INTO `motor` VALUES (34, 1, 8, 'Honda Brio', 'Kuning', 'AB 5638 CE', 2018, 'Tersedia', 250000, 0x486F6E64612D4272696F2D323031382E706E67);
+INSERT INTO `motor` VALUES (35, 1, 7, 'Nisan Grand Livina', 'Hitam', 'AB 6391 DE', 2018, 'Tersedia', 275000, 0x6772616E64206C6976696E615F312E6A7067);
+INSERT INTO `motor` VALUES (36, 1, 6, 'Toyota Avanza Veloz', 'Abu-Abu', 'AB 1069 GA', 2020, 'Tersedia', 275000, 0x76656C6F7A5F312E6A7067);
+INSERT INTO `motor` VALUES (37, 1, 6, 'Mitsubishi Expander', 'Silver', 'AB 1069 YI', 2019, 'Tersedia', 300000, 0x657870616E6465725F312E6A7067);
+INSERT INTO `motor` VALUES (38, 1, 7, 'Toyota Kijang Inova', 'Hitam', 'AB 6391 CA', 2016, 'Tersedia', 300000, 0x6B696A616E6720696E6F76615F312E706E67);
+INSERT INTO `motor` VALUES (39, 1, 8, 'Daihatsu Ayla', 'Merah', 'AB 7428 OG', 2018, 'Tersedia', 250000, 0x61796C61206D657261685F312E6A7067);
+INSERT INTO `motor` VALUES (40, 1, 6, 'Toyota Avanza', 'Hitam', 'AB 4635 DA', 2017, 'Tersedia', 275000, 0x6176616E7A6120686974616D5F312E6A7067);
+INSERT INTO `motor` VALUES (41, 1, 6, 'Toyota Avanza', 'Silver', 'AB 3315 XK', 2016, 'Tersedia', 250000, 0x31316176616E7A61206162752E6A7067);
+INSERT INTO `motor` VALUES (42, 1, 6, 'Toyota Avanza', 'Putih', 'AB 2810 EA', 2019, 'Tersedia', 250000, 0x31326176616E7A612070757469682E6A7067);
+INSERT INTO `motor` VALUES (43, 1, 8, 'Honda Brio', 'Putih', 'AB 3810 EO', 2014, 'Tersedia', 250000, 0x31336272696F2070757469682E6A7067);
+INSERT INTO `motor` VALUES (44, 1, 9, ' Toyota Kijang Innova Reborn', 'Putih', 'B 1510 RDA', 2019, 'Tersedia', 350000, 0x31347265626F726E2E706E67);
+INSERT INTO `motor` VALUES (45, 1, 8, 'Honda Brio Satya', 'Hitam', 'AB 4873 XK', 2019, 'Tersedia', 250000, 0x31356272696F20736174796120686974616D2E706E67);
+INSERT INTO `motor` VALUES (46, 1, 8, 'Honda Brio Satya', 'Putih', 'AB 3810 VO', 2020, 'Tersedia', 250000, 0x31366272696F2073617479612070757469682E706E67);
+INSERT INTO `motor` VALUES (47, 1, 6, 'Toyota Calya', 'Silver Metalic', 'AB 3810 EE', 2019, 'Tersedia', 250000, 0x313763616C6C79612E6A7067);
+INSERT INTO `motor` VALUES (48, 1, 6, 'Toyota Calya', 'Putih', 'AB 3810 RO', 2018, 'Tersedia', 250000, 0x313863616C79612070757475682E6A7067);
+INSERT INTO `motor` VALUES (49, 1, 6, 'Honda Jazz', 'Silver Metalic', 'AB 5730 AA', 2017, 'Tersedia', 275000, 0x31396A617A7A323031342E6A7067);
+INSERT INTO `motor` VALUES (50, 1, 8, 'Honda Jazz', 'Merah', 'AB 1715 XK', 2019, 'Tersedia', 275000, 0x32306A617A7A20323032302E6A7067);
+INSERT INTO `motor` VALUES (51, 1, 10, ' Toyota Kijang Innova', 'Silver Metalic', 'AB 3825 EA', 2015, 'Tersedia', 350000, 0x3231696E6F766120646973656C2E6A7067);
+INSERT INTO `motor` VALUES (52, 1, 10, 'Mitsubishi Pajero Sport', 'Hitam', 'AB 3811 VO', 2018, 'Tersedia', 450000, 0x323270616A65726F20686974616D2E6A7067);
+INSERT INTO `motor` VALUES (53, 1, 7, 'Toyota', 'Biru', 'AB2310IA', 2023, 'Tersedia', 20000, 0x466750596A325456734145746375412E6A7067);
 
 -- ----------------------------
 -- Table structure for pelanggan
@@ -149,7 +149,7 @@ CREATE TABLE `transaksi_peminjaman`  (
   `id_peminjaman` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_pelanggan` int(11) NULL DEFAULT NULL,
   `id_customerservice` int(11) NULL DEFAULT NULL,
-  `id_mobil` int(11) NULL DEFAULT NULL,
+  `id_motor` int(11) NULL DEFAULT NULL,
   `tgl_peminjaman` datetime(0) NULL DEFAULT NULL,
   `tgl_kembali` datetime(0) NULL DEFAULT NULL,
   `tgl_pengembalian` datetime(0) NULL DEFAULT NULL,
@@ -161,11 +161,11 @@ CREATE TABLE `transaksi_peminjaman`  (
   `id_sopir` int(5) NULL DEFAULT NULL,
   `harga_sopir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id_peminjaman`) USING BTREE,
-  INDEX `id_mobil`(`id_mobil`) USING BTREE,
+  INDEX `id_motor`(`id_motor`) USING BTREE,
   INDEX `id_customer`(`id_pelanggan`) USING BTREE,
   INDEX `id_admin`(`id_customerservice`) USING BTREE,
   INDEX `id_sopir`(`id_sopir`) USING BTREE,
-  CONSTRAINT `transaksi_peminjaman_ibfk_5` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id_mobil`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `transaksi_peminjaman_ibfk_5` FOREIGN KEY (`id_motor`) REFERENCES `motor` (`id_motor`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `transaksi_peminjaman_ibfk_6` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id_pelanggan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `transaksi_peminjaman_ibfk_7` FOREIGN KEY (`id_customerservice`) REFERENCES `customerservice` (`id_customerservice`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `transaksi_peminjaman_ibfk_8` FOREIGN KEY (`id_sopir`) REFERENCES `sopir` (`id_sopir`) ON DELETE RESTRICT ON UPDATE RESTRICT
