@@ -90,13 +90,13 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->get('/delete_pelanggan/(:segment)', 'c_pelanggan::hapuspelanggan/$1');
 
 	
-	$routes->get('/sopir', 'c_sopir::index');
-	$routes->get('/cekSopir', 'c_jadwalsopir::cekSopir');
-	$routes->get('/sopir/tambah', 'c_sopir::inputdata');
-	$routes->post('/sopir/simpan', 'c_sopir::simpan');
-	$routes->get('/ubah_sopir/(:segment)', 'c_sopir::keformedit/$1');
-	$routes->post('/ubah_sopir/(:segment)', 'c_sopir::updatesopir/$1');
-	$routes->get('/delete_sopir/(:segment)', 'c_sopir::hapussopir/$1');
+	// $routes->get('/sopir', 'c_sopir::index');
+	// $routes->get('/cekSopir', 'c_jadwalsopir::cekSopir');
+	// $routes->get('/sopir/tambah', 'c_sopir::inputdata');
+	// $routes->post('/sopir/simpan', 'c_sopir::simpan');
+	// $routes->get('/ubah_sopir/(:segment)', 'c_sopir::keformedit/$1');
+	// $routes->post('/ubah_sopir/(:segment)', 'c_sopir::updatesopir/$1');
+	// $routes->get('/delete_sopir/(:segment)', 'c_sopir::hapussopir/$1');
 
 
 

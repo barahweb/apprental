@@ -128,8 +128,6 @@ function getBulan($bln)
                                             <th>Tanggal Peminjaman</th>
                                             <th>Tanggal Kembali</th>
                                             <th>Harga Peminjaman</th>
-                                            <th>Sopir</th>
-                                            <th>Harga Sopir</th>
                                         </tr>
                                         <tr>
                                             <?php 
@@ -145,8 +143,6 @@ function getBulan($bln)
                                             <td><?= $invoice->tgl_peminjaman; ?></td>
                                             <td><?= $invoice->tgl_kembali; ?></td>
                                             <td class="text-center">Rp <?= number_format($invoice->harga_peminjaman, 0, ",", "."); ?></td>
-                                            <td><?= $sql->nama_sopir ?? '-'; ?></td>
-                                            <td class="text-center">Rp <?= number_format($invoice->harga_sopir, 0, ",", "."); ?></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -159,14 +155,10 @@ function getBulan($bln)
                                             <div class="invoice-detail-name">Subtotal</div>
                                             <div class="invoice-detail-value">Rp <?= number_format($invoice->harga_peminjaman, 0, ",", "."); ?></div>
                                         </div>
-                                        <div class="invoice-detail-item">
-                                            <div class="invoice-detail-name">Sopir</div>
-                                            <div class="invoice-detail-value">Rp <?= number_format($invoice->harga_sopir, 0, ",", "."); ?></div>
-                                        </div>
                                         <hr class="mt-2 mb-2">
                                         <div class="invoice-detail-item">
                                             <div class="invoice-detail-name">Total</div>
-                                            <div class="invoice-detail-value invoice-detail-value-lg">Rp <?= number_format($invoice->harga_peminjaman + $invoice->harga_sopir, 0, ",", "."); ?></div>
+                                            <div class="invoice-detail-value invoice-detail-value-lg">Rp <?= number_format($invoice->harga_peminjaman, 0, ",", "."); ?></div>
                                         </div>
                                     </div>
                                 </div>

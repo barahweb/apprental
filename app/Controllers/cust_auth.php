@@ -275,9 +275,9 @@ class cust_auth extends BaseController
     {
 
         // dd($this->request->getVar());
-        if ($this->request->getVar('checkSopir') == 'on') {
-            $idSopir = $this->request->getVar('checkbox_name');
-        }
+        // if ($this->request->getVar('checkSopir') == 'on') {
+        //     $idSopir = $this->request->getVar('checkbox_name');
+        // }
 
         $db = \Config\Database::connect();
 
@@ -318,17 +318,7 @@ class cust_auth extends BaseController
                         ->with('status_icon', 'error')
                         ->with('status', 'Gagal!');
                 } else {
-                    if ($this->request->getVar('checkSopir') == 'on') {
-                        $cekHargaSopir = $db->query(
-                                            "select harga_sewa from sopir where id_sopir = '$idSopir'"
-                                        )->getRow();
-
-                        $harga_total = ($harga * $interval->days) + ($cekHargaSopir->harga_sewa * $interval->days);
-
-                    } else {
                         $harga_total = $harga * $interval->days;
-
-                    }
                     $data = [
 
                         'kdpeminjaman'          => $id_peminjaman,
@@ -338,7 +328,7 @@ class cust_auth extends BaseController
                         'tanggalkembali'        => $tanggalkembali,
                         'tanggalpeminjaman'     => $tanggalpeminjaman,
                         'harga_total'           => $harga_total,
-                        'id_sopir'              => $idSopir ?? NULL
+                        // 'id_sopir'              => $idSopir ?? NULL
 
                     ];
                     
