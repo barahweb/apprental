@@ -56,16 +56,16 @@
                                     <td><img src="<?= base_url() ?>/img/<?= $record['gambar']; ?>" class="rounded" height='70'></td>
                                     <td>
                                         <?php if ($record['status'] == "Tersedia" || $record['status'] == "Tidak Tersedia") {
-                                            echo '<a href="/ubahmobil/' . $record['id_mobil'] . '" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
-                                            <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#del' . $record['id_mobil'] . '"><i class="fas fa-trash"></i>
+                                            echo '<a href="/ubahmotor/' . $record['id_motor'] . '" class="btn btn-success btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                                            <button type="button" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#del' . $record['id_motor'] . '"><i class="fas fa-trash"></i>
                                             </button>';
                                         } else {
                                             echo "<li class='fa fa-times-circle' style='font-size: 2em; color:red'></li>";
                                         } ?>
-                                        <!-- <a href="/ubahmobil/<?= $record['id_mobil']; ?>" class="btn btn-success btn-circle btn-sm">
+                                        <!-- <a href="/ubahmotor/<?= $record['id_motor']; ?>" class="btn btn-success btn-circle btn-sm">
                                             <i class="fas fa-edit"></i></a> -->
                                     </td>
-                                    <div class="modal fade" id="del<?= $record['id_mobil']; ?>">
+                                    <div class="modal fade" id="del<?= $record['id_motor']; ?>">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -73,10 +73,10 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Apakah Anda yakin ingin menghapus mobil <b><?= $record['merk']; ?></b>?</p>
+                                                    <p>Apakah Anda yakin ingin menghapus motor <b><?= $record['merk']; ?></b>?</p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a type="button" class="btn btn-success" href="/delete_mobil/<?= $record['id_mobil']; ?>">Ya</a>
+                                                    <a type="button" class="btn btn-success" href="/delete_motor/<?= $record['id_motor']; ?>">Ya</a>
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
                                                 </div>
                                             </div>

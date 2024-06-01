@@ -146,7 +146,7 @@
     </script>
 
     <script>
-        $("#mobilInput").change(function() {
+        $("#motorInput").change(function() {
             var value = $(this).val();
             const months = [
                 'Januari',

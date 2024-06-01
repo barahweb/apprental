@@ -19,7 +19,7 @@ class m_peminjaman extends Model
         // return $this->db->query('select * from peminjaman')->getResultArray();
         return $this->db->table($this->table)
             ->select('*')
-            ->join('mobil', 'mobil.id_mobil = peminjaman.id_mobil')
+            ->join('motor', 'motor.id_motor = peminjaman.id_motor')
             ->where(['status_peminjaman' => 'Belum Lunas'])
             ->get()->getResultArray();
     }

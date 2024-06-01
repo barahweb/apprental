@@ -55,7 +55,7 @@ $randomnomor2 = mt_rand($random1, $random2);
             </div>
           </form>
           <div class="center">
-            <a href="/lupa_passwordcust" style="margin-left: 190px;">Lupa Password?</a>
+            <a href="/lupa_passwordcust" style="margin-left: 190px; color: #000000;">Lupa Password?</a>
           </div>
         </div>
       </div>

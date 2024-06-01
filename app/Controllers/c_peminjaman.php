@@ -22,7 +22,7 @@ class c_peminjaman extends BaseController
     {
         $db = \Config\Database::connect();
         $query = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan) where status_peminjaman < '3'"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan) where status_peminjaman < '3'"
         )->getResultArray();
         $data = [
             'judul' => $this->judul,
@@ -36,7 +36,7 @@ class c_peminjaman extends BaseController
     {
         $db = \Config\Database::connect();
         $query = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan) where status_peminjaman='3'"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan) where status_peminjaman='3'"
         )->getResultArray();
         $data = [
             'judul' => $this->judul,
@@ -67,15 +67,15 @@ class c_peminjaman extends BaseController
         $pelanggan = $db->query(
             "SELECT * FROM pelanggan"
         )->getResultArray();
-        $mobil = $db->query(
-            "SELECT * FROM mobil where status='Tersedia'"
+        $motor = $db->query(
+            "SELECT * FROM motor where status='Tersedia'"
         )->getResultArray();
         $data = [
             'judul' => $this->judul,
             'link' => $this->link,
             'kdpeminjaman' => $kdpeminjaman,
             'pelanggan' => $pelanggan,
-            'mobil' => $mobil
+            'motor' => $motor
         ];
         // dd($kdpeminjaman);
         return view($this->lib . '/add', $data);
@@ -86,18 +86,18 @@ class c_peminjaman extends BaseController
         $id_customerservice = $this->request->getVar('id_customerservice');
         $id_peminjaman = $this->request->getVar('id_peminjaman');
         $nama = $this->request->getVar('nama');
-        $mobil = $this->request->getVar('mobil');
+        $motor = $this->request->getVar('motor');
         $tanggalpeminjaman = $this->request->getVar('tanggalpeminjaman');
         $tanggalkembali = $this->request->getVar('tanggalkembali');
         $status_peminjaman = $this->request->getVar('status_peminjaman');
         $harga = $this->request->getVar('harga');
         $harga1 = str_replace(".", "", $harga);
         $db = \Config\Database::connect();
-        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN mobil using(id_mobil) WHERE tgl_peminjaman > '$tanggalpeminjaman' AND tgl_kembali < '$tanggalkembali' AND id_mobil = '$mobil' AND  status_peminjaman < '4'
+        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN motor using(id_motor) WHERE tgl_peminjaman > '$tanggalpeminjaman' AND tgl_kembali < '$tanggalkembali' AND id_motor = '$motor' AND  status_peminjaman < '4'
         UNION
-        SELECT * FROM transaksi_peminjaman JOIN mobil  using(id_mobil) WHERE tgl_kembali>'$tanggalpeminjaman' AND tgl_peminjaman < '$tanggalkembali' AND id_mobil = '$mobil'AND  status_peminjaman < '4'")->getRowArray();
+        SELECT * FROM transaksi_peminjaman JOIN motor  using(id_motor) WHERE tgl_kembali>'$tanggalpeminjaman' AND tgl_peminjaman < '$tanggalkembali' AND id_motor = '$motor'AND  status_peminjaman < '4'")->getRowArray();
         if($sql > 0) {
-            session()->setFlashdata('status_text', 'Mobil Sedang Digunakan!');
+            session()->setFlashdata('status_text', 'Motor Sedang Digunakan!');
             return redirect()->back()
             ->with('status_icon', 'error')
             ->with('status', 'Gagal');
@@ -111,7 +111,7 @@ class c_peminjaman extends BaseController
             // $jaminan->move('img');
             // $jaminan1 = $jaminan->getName();
             $db->query(
-                "INSERT INTO transaksi_peminjaman VALUES ('$id_peminjaman', '$nama','$id_customerservice','$mobil','$tanggalpeminjaman', '$tanggalkembali','','$status_peminjaman','','', '$harga1','');"
+                "INSERT INTO transaksi_peminjaman VALUES ('$id_peminjaman', '$nama','$id_customerservice','$motor','$tanggalpeminjaman', '$tanggalkembali','','$status_peminjaman','','', '$harga1','');"
             );
             session()->setFlashdata('status_text', 'Data Berhasil Ditambahkan!');
             return redirect()->to($this->link)
@@ -124,13 +124,13 @@ class c_peminjaman extends BaseController
     {
         $db = \Config\Database::connect();
         $query = $db->query(
-            "SELECT * FROM transaksi_peminjaman JOIN mobil USING(id_mobil) join pelanggan using(id_pelanggan) where id_peminjaman = '$id_peminjaman'"
+            "SELECT * FROM transaksi_peminjaman JOIN motor USING(id_motor) join pelanggan using(id_pelanggan) where id_peminjaman = '$id_peminjaman'"
         )->getResultArray();
         $pelanggan = $db->query(
             "SELECT id_pelanggan FROM pelanggan join transaksi_peminjaman using(id_pelanggan) where id_peminjaman = '$id_peminjaman'"
         )->getRow();
-        $mobil = $db->query(
-            "SELECT id_mobil FROM mobil join transaksi_peminjaman using(id_mobil) where id_peminjaman = '$id_peminjaman'"
+        $motor = $db->query(
+            "SELECT id_motor FROM motor join transaksi_peminjaman using(id_motor) where id_peminjaman = '$id_peminjaman'"
         )->getRow();
         $jam = $db->query(
             "SELECT NOW() AS jam"
@@ -140,7 +140,7 @@ class c_peminjaman extends BaseController
             'link' => $this->link,
             'peminjaman' => $query,
             'pelanggan' => $pelanggan,
-            'mobil' => $mobil,
+            'motor' => $motor,
             'jam' => $jam
         ];
         // dd($query);
@@ -152,10 +152,10 @@ class c_peminjaman extends BaseController
         $customerservice = session()->get('id_customerservice');
         $tanggalpengembalian = $this->request->getVar('tanggalpengembalian');
         $status_pengembalian = $this->request->getVar('status_pengembalian');
-        $mobil = $this->request->getVar('id_mobil');
+        $motor = $this->request->getVar('id_motor');
         $denda = $this->request->getVar('denda');
         $denda1 = str_replace(".", "", $denda);
-        // dd($mobil);
+        // dd($motor);
         $db = \Config\Database::connect();
         $query = $db->query(
             "UPDATE transaksi_peminjaman SET id_customerservice ='$customerservice', status_peminjaman='4',tgl_pengembalian ='$tanggalpengembalian', status_pengembalian='$status_pengembalian', denda='$denda1' WHERE id_peminjaman='$id_peminjaman';"
@@ -180,7 +180,7 @@ class c_peminjaman extends BaseController
     }
     public function updatepeminjamanselesai($id_peminjaman)
     {
-        $id_mobil = $this->request->getVar('id_mobil');
+        $id_motor = $this->request->getVar('id_motor');
         $db = \Config\Database::connect();
         $query = $db->query(
             "UPDATE transaksi_peminjaman SET status_peminjaman='3' WHERE id_peminjaman='$id_peminjaman';"
@@ -196,7 +196,7 @@ class c_peminjaman extends BaseController
         // return view('/tampilan/loadtable');
         $selected = $_POST["value"];
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT * from transaksi_peminjaman where id_mobil = '$selected' and status_peminjaman < 4");
+        $query = $db->query("SELECT * from transaksi_peminjaman where id_motor = '$selected' and status_peminjaman < 4");
         $row   = $query->getResultArray();
         echo json_encode($row);
     }

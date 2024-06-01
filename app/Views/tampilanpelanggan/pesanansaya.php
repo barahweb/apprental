@@ -79,7 +79,7 @@ function getBulan($bln)
                             <?php
                             $useremail =  session()->get('id_pelanggan');
                             $db = \Config\Database::connect();
-                            $sql = $db->query("SELECT * from transaksi_peminjaman join mobil using(id_mobil) join type using(id_type) where id_pelanggan='$useremail' ORDER BY tgl_peminjaman DESC;")->getResultArray();
+                            $sql = $db->query("SELECT * from transaksi_peminjaman join motor using(id_motor) join type using(id_type) where id_pelanggan='$useremail' ORDER BY tgl_peminjaman DESC;")->getResultArray();
                             $cnt = 1;
                             if (count($sql) > 0) {
                                 foreach ($sql as $result) {  ?>
@@ -164,7 +164,8 @@ function getBulan($bln)
 .button-6:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF
+  background-color: #000;
 }
 
 .button-6:hover {

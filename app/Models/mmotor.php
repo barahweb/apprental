@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class mmobil extends Model
+class mmotor extends Model
 {
-    protected $table = 'mobil';
+    protected $table = 'motor';
     protected $useTimestamps = true;
     protected $allowedFields = ['id_customerservice', 'id_type', 'merk', 'warna', 'no_plat', 'tahun', 'status', 'harga', 'gambar'];
 
@@ -22,21 +22,21 @@ class mmobil extends Model
         return $this->db->table($this->table)
             ->insert($data);
     }
-    public function go_ubahmobil($id_mobil)
+    public function go_ubahmotor($id_motor)
     {
         return $this->db->table($this->table)
             ->select('*')
-            ->where(['id_mobil' => $id_mobil])
+            ->where(['id_motor' => $id_motor])
             ->get()->getResultArray();
     }
-    public function ubah_user($data, $id_mobil)
+    public function ubah_user($data, $id_motor)
     {
         return $this->db->table($this->table)
-            ->update($data, ['id_mobil' => $id_mobil]);
+            ->update($data, ['id_motor' => $id_motor]);
     }
-    public function hapus_user($id_mobil)
+    public function hapus_user($id_motor)
     {
         return $this->db->table($this->table)
-            ->delete(['id_mobil' => $id_mobil]);
+            ->delete(['id_motor' => $id_motor]);
     }
 }

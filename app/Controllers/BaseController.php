@@ -59,7 +59,7 @@ class BaseController extends Controller
 		// dd($query);
 		foreach ($query as $tgl) {
 			$tglakhir = $tgl['tgl'];
-			$id_mobil = $tgl['id_mobil'];
+			$id_motor = $tgl['id_motor'];
 			$id_peminjaman = $tgl['id_peminjaman'];
 			// dd($id_peminjaman);
 			if ($tglakhir > '2') {
@@ -67,7 +67,7 @@ class BaseController extends Controller
 					"UPDATE transaksi_peminjaman SET status_peminjaman = '5' WHERE id_peminjaman = '$id_peminjaman'"
 				);
 				// $query2 = $db->query(
-				// 	"UPDATE mobil JOIN transaksi_peminjaman USING(id_mobil) SET STATUS ='Tersedia' WHERE id_mobil = '$id_mobil'"
+				// 	"UPDATE motor JOIN transaksi_peminjaman USING(id_motor) SET STATUS ='Tersedia' WHERE id_motor = '$id_motor'"
 				// );
 			}
 		}

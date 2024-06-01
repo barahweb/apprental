@@ -83,8 +83,8 @@ function getBulan($bln)
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Pelanggan</th>
-                                <th>Merk Mobil</th>
-                                <th>Plat Mobil</th>
+                                <th>Merk Motor</th>
+                                <th>Plat Motor</th>
                                 <th>Tanggal Peminjaman</th>
                                 <th>Tanggal Kembali</th>
                                 <th>Status Peminjaman</th>
@@ -131,7 +131,7 @@ function getBulan($bln)
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
                                                                 <div class="modal-body">
-                                                                    <p>Apakah anda yakin ingin mengubah status peminjaman Mobil <b>"<?=$record['merk']; ?>"</b> menjadi <b>"Sedang Digunakan"</b> ? </p>
+                                                                    <p>Apakah anda yakin ingin mengubah status peminjaman Motor <b>"<?=$record['merk']; ?>"</b> menjadi <b>"Sedang Digunakan"</b> ? </p>
                                                                 </div>
                                                             </div>
                                                         </div>

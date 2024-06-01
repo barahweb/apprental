@@ -32,7 +32,7 @@ a,
 .header_widgets a:hover, 
 .navbar-default .navbar-nav > li.active a, 
 .navbar-default .navbar-nav > li:focus a, 
-.navbar-default .navbar-nav > li:hover a,  
+/* .navbar-default .navbar-nav > li:hover a,   */
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:focus, 
@@ -58,8 +58,8 @@ a,
 .header_style2 .dropdown-menu > li > a:focus, 
 .header_style2 .dropdown-menu > li > a:hover, 
 .blog-info-box .share_article:hover ul li a:hover {
-	color:#D8A127;
-	fill: #D8A127;
+	color:#000000;
+	fill: #ffffff;
 }
 
 
@@ -97,8 +97,8 @@ a,
 .main_bg, 
 .slider .slider-handle, .slider .slider-selection, 
 .primary-bg {
-  background: #FCDB7E none repeat scroll 0 0;
-  fill: #FCDB7E;
+  background: #000000 none repeat scroll 0 0;
+  fill: #000000;
 }
 .btn:hover, .btn:focus, 
 .search_other:hover, 
@@ -121,14 +121,14 @@ blockquote,
 .navbar-default .navbar-toggle, 
 .owl-buttons div, 
 .about_info .icon_box {
-	border-color: #FCDB7E;
+	border-color: #000000;
 }
 
 .recent-tab .nav.nav-tabs li.active::after {
-	border-color: #FCDB7E rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+	border-color: #000000 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
 .td_divider:after {
-	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0 ) rgba(0, 0, 0, 0 ) #FCDB7E ;
+	border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0 ) rgba(0, 0, 0, 0 ) #000000 ;
 }
 
 .navbar-nav > li > .dropdown-menu li {
@@ -137,7 +137,7 @@ blockquote,
 
 @media (max-width:767px) {
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-	color:#FCDB7E;	
+	color:#000000;	
 }
 
 

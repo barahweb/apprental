@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Yaka Transport</title>
+    <title>MTG Trans</title>
     <link rel="shortcut icon" href="<?= base_url() ?>/img/Logo.jpg" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Custom fonts for this template-->
@@ -43,7 +43,7 @@
                                 <div class="col-lg-12">
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h2 class="card-header" style="color: steelblue;">Yaka Transport</h2>
+                                            <h2 class="card-header" style="color: steelblue;">MTG Trans</h2>
                                         </div>
                                         <div class="card-body">
                                             <form method="POST" action="/cek-login">
@@ -85,7 +85,7 @@
                                         </div>
                                         <footer>
                                             <div class="copyright text-center my-auto">
-                                                <span>Copyright &copy; <?php echo "Yaka Transport " . (int)date('Y') ?></span>
+                                                <span>Copyright &copy; <?php echo "MTG Trans " . (int)date('Y') ?></span>
                                             </div>
                                         </footer>
                                     </div>

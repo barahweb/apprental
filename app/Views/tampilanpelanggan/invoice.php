@@ -75,8 +75,8 @@ function getBulan($bln)
         </div>
 
         <div class="text" style="margin-top:40px">
-            <h3 class="mt-5" style="font-size: 50px;text-align: center;">Yaka Transport</h3>
-            <h5 class="tengah" style="font-size: 25px;">Jl. Plemburan, Sedan, Sariharjo, Kec. Ngaglik </h5>
+            <h3 class="mt-5" style="font-size: 50px;text-align: center;">MTG Trans</h3>
+            <h5 class="tengah" style="font-size: 25px;">Jl Pogung Kidul No.25, Sinduadi, Kec. Mlati </h5>
             <h5 class="tengah" style="font-size: 25px;">Kabupaten Sleman, Daerah Istimewa Yogyakarta </h5>
         </div>
     </div>
@@ -123,8 +123,8 @@ function getBulan($bln)
                                     <table class="table table-striped table-hover table-md">
                                         <tr>
                                             <th>No</th>
-                                            <th>Merk Mobil</th>
-                                            <th>Plat Mobil</th>
+                                            <th>Merk Motor</th>
+                                            <th>Plat Motor</th>
                                             <th>Tanggal Peminjaman</th>
                                             <th>Tanggal Kembali</th>
                                             <th>Harga Peminjaman</th>

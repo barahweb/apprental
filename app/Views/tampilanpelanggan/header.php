@@ -35,11 +35,11 @@
         <ul class="nav navbar-nav">
           <?php if (session()->get('log') == true) { ?>
             <li><a href="/">Home</a> </li>
-            <li><a href="/listmobil">List Mobil</a>
+            <li><a href="/listmotor">List Motor</a>
             <li><a href="/pesanancust">Pesanan Saya</a></li>
           <?php } else { ?>
             <li><a href="/">Home</a> </li>
-            <li><a href="/listmobil">List Mobil</a>
+            <li><a href="/listmotor">List Motor</a>
             <?php } ?>
         </ul>
       </div>

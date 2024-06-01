@@ -6,7 +6,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Yaka Transport </sup></div>
+            <div class="sidebar-brand-text mx-3">MTG Trans </sup></div>
         </a>
 
         <!-- Divider -->
@@ -38,7 +38,7 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/type">Data Type</a>
-                    <a class="collapse-item" href="/mobil">Data Mobil</a>
+                    <a class="collapse-item" href="/motor">Data Motor</a>
                     <a class="collapse-item" href="/pelanggan">Data Pelanggan</a>
                     <!-- <a class="collapse-item" href="/sopir">Data Sopir</a> -->
                     <!-- <a class="collapse-item" href="/jadwal_sopir">Data Jadwal Sopir</a> -->

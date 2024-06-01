@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\mmobil;
+use App\Models\mmotor;
 use Exception;
 
-class c_mobil extends BaseController
+class c_motor extends BaseController
 {
 	protected $model;
 
@@ -14,10 +14,10 @@ class c_mobil extends BaseController
 	protected $judul;
 	public function __construct()
 	{
-		$this->model = new mmobil();
-		$this->judul = 'Mobil';
-		$this->lib = 'datamaster/mobil';
-		$this->link = '/mobil';
+		$this->model = new mmotor();
+		$this->judul = 'Motor';
+		$this->lib = 'datamaster/motor';
+		$this->link = '/motor';
 	}
 	public function index()
 	{
@@ -67,7 +67,7 @@ class c_mobil extends BaseController
 			->with('status_icon', 'success')
 			->with('status', 'Berhasil');
 	}
-	public function updatemobil($kode)
+	public function updatemotor($kode)
 	{
 		$gambar2 = $this->request->getFile('gambar');
 
@@ -92,31 +92,31 @@ class c_mobil extends BaseController
 		$gambar = $gambar;
 		$db = \Config\Database::connect();
 		$query = $db->query(
-			"UPDATE mobil SET merk='$merk', warna='$warna', no_plat ='$no_plat',  tahun ='$tahun', status='$status', harga='$harga', gambar='$gambar' WHERE id_mobil='$kode';"
+			"UPDATE motor SET merk='$merk', warna='$warna', no_plat ='$no_plat',  tahun ='$tahun', status='$status', harga='$harga', gambar='$gambar' WHERE id_motor='$kode';"
 		);
 		session()->setFlashdata('status_text', 'Data Berhasil Diubah!');
 		return redirect()->to($this->link)
 			->with('status_icon', 'success')
 			->with('status', 'Berhasil');
 	}
-	public function keformedit($id_mobil)
+	public function keformedit($id_motor)
 	{
 		$data = [
-			'judul' => 'Ubah Mobil',
-			'mobil' => $this->model->go_ubahmobil($id_mobil),
+			'judul' => 'Ubah Motor',
+			'motor' => $this->model->go_ubahmotor($id_motor),
 		];
 		return view($this->lib . '/edit', $data);
 		// dd($data);
 	}
-	public function hapusmobil($id_mobil)
+	public function hapusmotor($id_motor)
 	{
 		$db = \Config\Database::connect();
 		$query = $db->query(
-			"SELECT gambar from mobil where id_mobil = '$id_mobil'"
+			"SELECT gambar from motor where id_motor = '$id_motor'"
 		);
 		$row   = $query->getRow();
 		try {
-			$success = $this->model->hapus_user($id_mobil);
+			$success = $this->model->hapus_user($id_motor);
 			if (!$success) {
 				session()->setFlashdata('status_text', 'Data Tidak Dapat Dihapus!');
 				return redirect()->to($this->link)

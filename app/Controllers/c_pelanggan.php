@@ -121,7 +121,7 @@ class c_pelanggan extends BaseController
 	{
 		$db = \Config\Database::connect();
 		$hargaMT     =  $_POST['hargaMT'];
-		$mobil     =  $_POST['mobil'];
+		$motor     =  $_POST['motor'];
 		$id_peminjaman     =  $_POST['id_peminjaman'];
 		$id_pelanggan     =  $_POST['id_pelanggan'];
 		$getCust = $db->query("SELECT * FROM pelanggan where id_pelanggan = '$id_pelanggan'")->getResultArray();
@@ -136,7 +136,7 @@ class c_pelanggan extends BaseController
 			"id" => $id_peminjaman,
 			"price" => (float)$hargaMT,
 			"quantity" => 1,
-			"name" => "Pembayaran Sewa " .  $mobil
+			"name" => "Pembayaran Sewa " .  $motor
 		];
 
 		$transaction_details = array(
@@ -190,7 +190,7 @@ class c_pelanggan extends BaseController
 		// 	'hasil' => $this->request->getVar()
 		// ]);
 		$harga_total 	= $this->request->getVar('hargaMT');
-		$id_mobil 		= $this->request->getVar('id_mobil');
+		$id_motor 		= $this->request->getVar('id_motor');
 		$mulai 			= $this->request->getVar('tanggalpeminjaman');
 		$selesai 		= $this->request->getVar('tanggalkembali');
 		$order_id 		= $this->request->getVar('order_id');
@@ -198,9 +198,9 @@ class c_pelanggan extends BaseController
 		$pdf 			= $this->request->getVar('pdf');
 		$db 			= \Config\Database::connect();
 
-        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN mobil using(id_mobil) WHERE tgl_peminjaman > '$mulai' AND tgl_kembali < '$selesai' AND id_mobil = '$id_mobil' AND status_peminjaman < '4'
+        $sql = $db->query("SELECT * FROM transaksi_peminjaman JOIN motor using(id_motor) WHERE tgl_peminjaman > '$mulai' AND tgl_kembali < '$selesai' AND id_motor = '$id_motor' AND status_peminjaman < '4'
         UNION
-        SELECT * FROM transaksi_peminjaman JOIN mobil  using(id_mobil) WHERE tgl_kembali>'$mulai' AND tgl_peminjaman < '$selesai' AND id_mobil = '$id_mobil'AND status_peminjaman < '4'")->getRowArray();
+        SELECT * FROM transaksi_peminjaman JOIN motor  using(id_motor) WHERE tgl_kembali>'$mulai' AND tgl_peminjaman < '$selesai' AND id_motor = '$id_motor'AND status_peminjaman < '4'")->getRowArray();
 
 		if($sql > 0) {
 			echo json_encode([
@@ -213,7 +213,7 @@ class c_pelanggan extends BaseController
 				
 				$data = [
 					'id_peminjaman' 	=> $order_id,
-					'id_mobil' 			=> $id_mobil,
+					'id_motor' 			=> $id_motor,
 					'id_pelanggan' 		=> $id_pelanggan,
 					'tgl_peminjaman' 	=> $mulai,
 					'tgl_kembali' 		=> $selesai,
