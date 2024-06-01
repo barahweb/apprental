@@ -171,7 +171,8 @@ function getBulan($bln)
 .button-6:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  color: #FFFFFF
+  background-color: #000;
 }
 
 .button-6:hover {

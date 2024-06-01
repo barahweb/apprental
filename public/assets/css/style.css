@@ -90,11 +90,11 @@ Version:1.0
 ==========================*/
 
 body {
-	font-family: 'Lato', sans-serif;
-	margin:0px;
-	padding:0px !important;
-	overflow-x:hidden;
-	color:#555555;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px !important;
+  overflow-x: hidden;
+  color: #555555;
 }
 
 
@@ -926,7 +926,7 @@ table thead th, table thead td {
 	margin:0 2px 0;
 }
 .user_login ul.dropdown-menu {
-  background: #FCDB7E none repeat scroll 0 0;
+  background: #000000 none repeat scroll 0 0;
   border-radius: 0;
   padding: 15px 0;
   top: 107%;
@@ -939,7 +939,7 @@ table thead th, table thead td {
 	2.1 Navigation & Dropdown Menu
 ------------------------------------------*/
 #navigation_bar {
-  background: #FCDB7E none repeat scroll 0 0;
+  background: #000000 none repeat scroll 0 0;
   border-radius: 0;
   padding: 0;
 }
@@ -977,6 +977,7 @@ nav.navbar {
   padding: 20px 22px;
   text-transform: uppercase;
   position:relative;
+  color: #ffffff;
 }
 .navbar-default .navbar-nav > li.dropdown > a {
   padding: 20px 42px 20px 22px;
@@ -991,6 +992,7 @@ nav.navbar {
 .navbar-default .navbar-nav li:hover a,
 .navbar-default .navbar-nav li.active a {
 	color:#fff;
+  fill: #ffffff;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
@@ -1070,7 +1072,7 @@ nav.navbar {
 -------------------------------*/
 :root {
   --text-color: #707070;
-  --architects-font: "Architects Daughter", cursive;
+  --architects-font: Arial, cursive;
   --poppins-font: "Poppins", sans-serif;
   --red-color: #e58181;
   --blue-color: #37718e;
@@ -1860,7 +1862,7 @@ header .header button:hover {
 	3.12. Footer
 ------------------------*/
 .footer-top {
-  background: #FCDB7E none repeat scroll 0 0;
+  background: #000000 none repeat scroll 0 0;
   color: var(--text-color);
   font-family: var(--architects-font);
   padding: 80px 0;
@@ -1909,7 +1911,7 @@ input.newsletter-input {
   padding-top: 10px;
 }
 .footer-bottom {
-  background: #D8A127 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   padding: 22px 0;
 }
 .footer_widget {
@@ -4820,7 +4822,7 @@ h3 {
   margin: 5px 0;
 }
 .header_style2 .header_wrap {
-  background: #D8A127 none repeat scroll 0 0;
+  background: #ffffff none repeat scroll 0 0;
   float: none;
   margin: 13px -15px 0;
   padding: 0 15px;
