@@ -109,18 +109,6 @@ if (count($data) > 0) {
                             echo date('Y-m-d\TH:i:s', strtotime('1 day')) ?>" required>
                     </div>
 
-                    <div class="form-group">
-                    <label class="control-label">Dengan Sopir</span>*</label><br>
-                        <label class="switch">
-                            <input type="checkbox" name="checkSopir" id="checkSopir">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div id="showDataSopir">
-                        
-                    </div>
-                    
                     <button class="btn" type="submit" name="send" type="submit" style="margin-left: 1000px;" id="buttonsubmit">Pesan <span class="angle_arrow"><i class="fa fa-angle-right"
                                 aria-hidden="true"></i></span>
                     </button>

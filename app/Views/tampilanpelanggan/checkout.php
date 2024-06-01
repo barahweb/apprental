@@ -84,7 +84,6 @@ if (count($data) > 0) {
                             required>
                     </div>
                     <div class="form-group">
-                        <label class="control-label"><?= $id_sopir != NULL ? 'Harga Total dengan Sopir' : 'Harga Total' ?> <span>*</span></label>
                         <input type="text" class="form-control white_bg"
                             id="hargaTotal" name="hargaTotal"
                             value="Rp <?= number_format($harga_total, 0, ",", "."); ?>" readonly
@@ -97,7 +96,6 @@ if (count($data) > 0) {
                             <input type="hidden" name="result_data" id="result-data" value="">
                             <input type="hidden" name="pdf" id="pdf" value="">
                             <input type="hidden" name="order_id" id="order_id" value="">
-                            <input type="hidden" name="id_sopir" id="id_sopir" value="<?= $id_sopir; ?>">
                     </div>
 
                     <button class="btn" type="submit" name="send" type="submit" style="margin-left: 970px;" id="pay-button">Checkout <span

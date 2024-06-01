@@ -40,7 +40,7 @@
                     <a class="collapse-item" href="/type">Data Type</a>
                     <a class="collapse-item" href="/mobil">Data Mobil</a>
                     <a class="collapse-item" href="/pelanggan">Data Pelanggan</a>
-                    <a class="collapse-item" href="/sopir">Data Sopir</a>
+                    <!-- <a class="collapse-item" href="/sopir">Data Sopir</a> -->
                     <!-- <a class="collapse-item" href="/jadwal_sopir">Data Jadwal Sopir</a> -->
                 </div>
             </div>
@@ -64,7 +64,7 @@
         <?php endif; ?>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#laporan" aria-expanded="true" aria-controls="laporan">
                 <i class="fas fa-databasefw fa-chart-line"></i>
                 <span>Laporan</span>
@@ -75,7 +75,7 @@
                     <a class="collapse-item" href="/laporanpengembalian">Laporan Pengembalian</a>
                 </div>
             </div>
-        </li>
+        </li> -->
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

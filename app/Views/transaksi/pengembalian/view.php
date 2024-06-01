@@ -81,7 +81,7 @@ function getBulan($bln)
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Pelanggan</th>
-                                <th>Sopir</th>
+                                <!-- <th>Sopir</th> -->
                                 <th>Merk Mobil</th>
                                 <th>Plat Mobil</th>
                                 <th>Tanggal Peminjaman</th>
@@ -97,15 +97,14 @@ function getBulan($bln)
 
                             foreach ($data as $record) : ?>
                             <?php 
-                                $idSopir = $record['id_sopir'];
-                                if ($idSopir != NULL) {
-                                    $sql = $db->query("SELECT * from sopir where id_sopir = $idSopir")->getRow();
-                                } 
+                                // $idSopir = $record['id_sopir'];
+                                // if ($idSopir != NULL) {
+                                //     $sql = $db->query("SELECT * from sopir where id_sopir = $idSopir")->getRow();
+                                // } 
                                                         ?>
                                 <tr class="text-center">
                                     <th scope="row"><?= $no++; ?></th>
                                     <td class="text-center"><?= $record['nama']; ?></td>
-                                    <td class="text-center"><?= $sql->nama_sopir ?? '-' ?></td>
                                     <td class="text-center"><?= $record['merk']; ?></td>
                                     <td class="text-center"><?= $record['no_plat']; ?></td>
                                     <td class="text-center"><?php echo date('H:i:s', strtotime($record['tgl_peminjaman'])). '<br>'. tgl_indo($record['tgl_peminjaman'])  ?></td>

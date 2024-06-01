@@ -289,7 +289,7 @@
             let harga_total = ars[5]
             const tanggal_mulai = ars[3]
             const tanggal_selesai = ars[4]
-            const id_sopir = ars[7]
+            // const id_sopir = ars[7]
             // const order_id = result.order_id
             $("#pdf").val(result.pdf_url)
             $("#order_id").val(result.order_id)
@@ -339,7 +339,7 @@
             let tanggalpeminjaman = tanggalpeminjaman1.replace("T", " ")
             let tanggalkembali1 = document.getElementById("tanggalkembali").value
             let tanggalkembali = tanggalkembali1.replace("T", " ")
-            let id_sopir = document.getElementById("id_sopir").value;
+            // let id_sopir = document.getElementById("id_sopir").value;
             // console.log(jaminan)
             let form = document.getElementById("payment-form");
             console.log(form)
@@ -351,7 +351,7 @@
                 tanggalkembali,
                 hargaMT,
                 mobil,
-                id_sopir
+                // id_sopir
             ]
             $.ajax({
                 type: 'POST',
@@ -366,7 +366,7 @@
                     tanggalkembali,
                     hargaMT,
                     mobil,
-                    id_sopir
+                    // id_sopir
                 },
                 dataType: "json",
                 success: function(data) {
@@ -440,65 +440,65 @@
     </script>
 
     <script>
-        $("#checkSopir").on("change", function() {
-            if(this.checked) {
-                // console.log('knta')
-                $.ajax({
-                    method: "get",
-                    dataType: "json",
-                    url: "/cekSopir",
-                    success: res => {
-                        // console.log(res)
-                        showDataSopir(res)
-                    }
-                })
-            } else {
-                // console.log('sss')
-                $("#showDataSopir").html('')
-            }
-        })
+        // $("#checkSopir").on("change", function() {
+        //     if(this.checked) {
+        //         // console.log('knta')
+        //         $.ajax({
+        //             method: "get",
+        //             dataType: "json",
+        //             url: "/cekSopir",
+        //             success: res => {
+        //                 // console.log(res)
+        //                 showDataSopir(res)
+        //             }
+        //         })
+        //     } else {
+        //         // console.log('sss')
+        //         $("#showDataSopir").html('')
+        //     }
+        // })
 
-        function showDataSopir(res) {
-            let data = ``;
+        // function showDataSopir(res) {
+        //     let data = ``;
             
-            $.each(res.data, function(k, v){
-                var number_string = v.harga_sewa.toString(),
-                                        sisa = number_string.length % 3,
-                                        rupiah = number_string.substr(0, sisa),
-                                        ribuan = number_string.substr(sisa)
-                                        .match(/\d{3}/g);
-                                    if (ribuan) {
-                                        separator = sisa ? '.' : '';
-                                        rupiah += separator + ribuan.join('.');
-                                    }
+        //     $.each(res.data, function(k, v){
+        //         var number_string = v.harga_sewa.toString(),
+        //                                 sisa = number_string.length % 3,
+        //                                 rupiah = number_string.substr(0, sisa),
+        //                                 ribuan = number_string.substr(sisa)
+        //                                 .match(/\d{3}/g);
+        //                             if (ribuan) {
+        //                                 separator = sisa ? '.' : '';
+        //                                 rupiah += separator + ribuan.join('.');
+        //                             }
 
 
-                data += `  <tr> 
+        //         data += `  <tr> 
 
-                            <td style="text-align: center;"><input type="checkbox" class="radio rounded" name="checkbox_name" onclick="onlyOne(this)" value="${v.id_sopir}"></td>
-                            <td style="text-align: center;">${v.nama_sopir}</td>
-                            <td style="text-align: center;">Rp ${rupiah.toLocaleString('id-ID')}</td>
-                            </tr>`
-            })
+        //                     <td style="text-align: center;"><input type="checkbox" class="radio rounded" name="checkbox_name" onclick="onlyOne(this)" value="${v.id_sopir}"></td>
+        //                     <td style="text-align: center;">${v.nama_sopir}</td>
+        //                     <td style="text-align: center;">Rp ${rupiah.toLocaleString('id-ID')}</td>
+        //                     </tr>`
+        //     })
 
-            $("#showDataSopir").append(
-                `
-                * <span class="text-danger mb-2">(Pilih Salah Satu)</span><br>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th scope="col" style="text-align: center;">Nama Sopir</th>
-                            <th scope="col" style="text-align: center;">Biaya Sopir Perhari</th>
-                        </tr>
-                    </thead>
-                    <tbody>   `
-                    + data + 
-                    ` 
-                    </tbody>
-                </table>`
-            )
-        }
+        //     $("#showDataSopir").append(
+        //         `
+        //         * <span class="text-danger mb-2">(Pilih Salah Satu)</span><br>
+        //         <table class="table">
+        //             <thead>
+        //                 <tr>
+        //                     <th></th>
+        //                     <th scope="col" style="text-align: center;">Nama Sopir</th>
+        //                     <th scope="col" style="text-align: center;">Biaya Sopir Perhari</th>
+        //                 </tr>
+        //             </thead>
+        //             <tbody>   `
+        //             + data + 
+        //             ` 
+        //             </tbody>
+        //         </table>`
+        //     )
+        // }
 
         function onlyOne(checkbox) {
             var checkboxes = Array.from(document.getElementsByClassName('radio'))
