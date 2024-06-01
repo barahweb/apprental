@@ -4,8 +4,8 @@
 <section id="banner" class="banner-section">
     <header>
         <div class="header">
-            <h3>Get Your</h3>
-            <h1>Favorite Motorcycle</h1>
+            <h3>Get Your Favorite</h3>
+            <h1>Motorcycle</h1>
             <h3>in <span>MTG Trans</span></h3>
             <br>
             <a href="/listmotor">
