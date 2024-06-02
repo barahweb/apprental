@@ -96,7 +96,7 @@
                                         $denda = $diff->days * $us['harga_peminjaman'];
                                         ?>
 
-                                <input type="text"   <?php if ($date < $today) : ?> value="<?= number_format($denda, 0, ",", ".") || 0; ?>" <?php endif; ?> class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
+                                <input type="text"   <?php if ($date < $today) : ?> value="<?= number_format($denda, 0, ",", ".") ; ?>" <?php endif; ?> class="form-control" name="denda" id="denda" placeholder="Masukkan Denda" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
                                 </div>
                                 <label for="Harga">Harga Peminjaman</label>
                                 <div class="input-group mb-3">
