@@ -167,7 +167,7 @@ function getBulan($bln)
                     </div>
                     <hr>
                     <div class="text-md-right">
-                        <button class="btn btn-warning btn-icon icon-right no-print" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
+                        <!-- <button class="btn btn-warning btn-icon icon-right no-print" onclick="window.print()"><i class="fa fa-print"></i> Print</button> -->
                     </div>
                 </div>
             </div>
