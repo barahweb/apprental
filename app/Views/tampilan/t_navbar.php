@@ -73,6 +73,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="/laporanpeminjaman">Laporan Peminjaman</a>
                     <a class="collapse-item" href="/laporanpengembalian">Laporan Pengembalian</a>
+                    <a class="collapse-item" href="/laporanpelanggan">Laporan Data Pelanggan</a>
                 </div>
             </div>
         </li>

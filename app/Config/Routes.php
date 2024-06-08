@@ -128,8 +128,11 @@ $routes->group('', ['filter' => 'loginfilt'], function ($routes) {
 	$routes->post('/selesaipeminjamansetuju/(:segment)', 'c_peminjaman::updatepeminjamansetuju/$1');
 	$routes->get('/pengembalian', 'c_peminjaman::index2');
 	$routes->get('/laporanpeminjaman', 'laporanpeminjaman::index');
+	$routes->get('/laporanpelanggan', 'laporanpelanggan::index');
 	$routes->post('/caritanggalpeminjaman', 'laporanpeminjaman::caritanggal');
 	$routes->get('/laporanpengembalian', 'laporanpengembalian::index');
+
+
 	$routes->get('/pengembalian2', 'pengembalian::index');
 	$routes->post('/pengembalian2/caritanggal', 'pengembalian::caritanggal');
 
